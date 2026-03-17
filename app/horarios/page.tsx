@@ -1,7 +1,11 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { cronograma } from "@/data/cronograma";
 
+/**
+ * Página de visualización de cronogramas.
+ * Incluye funcionalidad de apertura automática y desplazamiento hacia el día actual.
+ */
 export default function HorariosPage() {
   const diasSemana = [
     "Domingo",
@@ -12,15 +16,13 @@ export default function HorariosPage() {
     "Viernes",
     "Sábado",
   ];
+
   const hoy = diasSemana[new Date().getDay()];
   const todayRef = useRef<HTMLDetailsElement>(null);
 
   useEffect(() => {
-    // El pequeño delay asegura que el navegador haya renderizado todo antes de scrollear
     const timer = setTimeout(() => {
-      if (todayRef.current) {
-        todayRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
+      todayRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 400);
     return () => clearTimeout(timer);
   }, []);
@@ -28,18 +30,18 @@ export default function HorariosPage() {
   return (
     <main className="p-6 md:p-10 flex flex-col items-center pt-10 min-h-screen">
       <div className="flex items-center justify-center gap-4 mb-6">
-        <div className="h-px w-16 bg-zinc-800"></div>
+        <div className="h-px w-16 bg-zinc-800" />
         <span className="text-[10px] tracking-[0.3em] text-zinc-500 uppercase">
           Joe Palooka Boxing
         </span>
-        <div className="h-px w-16 bg-zinc-800"></div>
+        <div className="h-px w-16 bg-zinc-800" />
       </div>
 
       <h2 className="text-3xl font-bold uppercase text-white tracking-tighter text-center">
         Horarios
       </h2>
 
-      <p className="text-xs md:text-xs text-zinc-400 max-w-md mt-5 leading-relaxed text-center mx-auto mb-8">
+      <p className="text-xs text-zinc-400 max-w-md mt-5 leading-relaxed text-center mx-auto mb-8">
         <span className="text-zinc-50">Sin turnos fijos:</span> Elige el horario
         que quieras con cualquiera de nuestros planes.
       </p>

@@ -9,20 +9,31 @@ const NAV_LINKS = [
   { href: "/contacto", label: "Contacto" },
 ];
 
+/**
+ * Componente de navegación principal.
+ * Gestiona estados de menú móvil y navegación responsiva.
+ */
 export default function Navbar() {
   const [menuAbierto, setMenuAbierto] = useState(false);
 
   return (
     <header className="sticky top-0 z-[100] w-full">
-      {/* NAVBAR DESKTOP */}
-      <nav className="hidden md:flex w-full bg-zinc-900/70 backdrop-blur-md border-b border-zinc-800 h-16 items-center px-6">
+      {/* NAVEGACIÓN DESKTOP */}
+      <nav className="hidden md:flex w-full bg-black/30 backdrop-blur-md border-b border-zinc-900/10 h-16 items-center px-6">
         <div className="max-w-7xl mx-auto flex justify-between items-center w-full">
-          <Link href="/" className="group">
+          {/* Identidad de marca */}
+          <Link href="/" className="group flex items-center gap-3">
+            <img
+              src="/img/icono.png"
+              alt="Logo Joe Palooka"
+              className="w-8 h-8 object-contain group-hover:scale-110 transition-transform"
+            />
             <span className="text-white text-xl font-bold uppercase tracking-tight leading-none group-hover:text-red-600 transition-colors">
               Joe Palooka
             </span>
           </Link>
 
+          {/* Enlaces de navegación */}
           <div className="flex gap-10 items-center">
             {NAV_LINKS.map((link) => (
               <Link
@@ -31,7 +42,7 @@ export default function Navbar() {
                 className="relative text-zinc-300 hover:text-white text-[13px] font-medium uppercase tracking-[0.2em] transition-colors group"
               >
                 {link.label}
-                <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-red-600 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute left-0 -bottom-2 h-[2px] w-0 bg-red-600 transition-all duration-300 group-hover:w-full" />
               </Link>
             ))}
           </div>
@@ -39,27 +50,33 @@ export default function Navbar() {
       </nav>
 
       {/* FRANJA PROMOCIONAL */}
-      <div className="relative w-full h-6 flex justify-center items-center bg-red-600/60 text-white backdrop-blur-sm border-y border-red-800/40 select-none overflow-hidden">
-        {/* GLOW AMARILLO */}
-        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(255,235,0,0.4),transparent_70%)] opacity-60"></div>
+      <div className="relative w-full h-6 flex justify-center items-center bg-red-600 text-white backdrop-blur-sm border-y border-red-800/40 select-none overflow-hidden">
         <span className="relative px-5 text-[10px] font-medium uppercase tracking-[0.2em] text-center">
           ¡PIDE TU CLASE DE PRUEBA!
         </span>
       </div>
-      {/* NAVBAR MÓVIL */}
+
+      {/* NAVEGACIÓN MÓVIL */}
       <nav className="md:hidden w-full">
-        <div className="relative bg-zinc-800 border-b border-zinc-800 h-16 px-6 flex justify-between items-center">
+        <div className="relative bg-zinc-900 border-b border-zinc-700 h-16 px-6 flex justify-between items-center">
           <Link
             href="/"
             onClick={() => setMenuAbierto(false)}
-            className="text-white text-lg font-black uppercase tracking-tight"
+            className="flex items-center gap-2 text-white text-lg font-bold uppercase tracking-tight"
           >
+            <img
+              src="/img/icono.png"
+              alt="Logo"
+              className="w-6 h-6 object-contain"
+            />
             Joe Palooka
           </Link>
 
+          {/* Activador de menú móvil */}
           <button
             onClick={() => setMenuAbierto(!menuAbierto)}
             className="flex flex-col gap-1.5 p-2 -mr-2 relative z-[120]"
+            aria-label="Abrir menú"
           >
             <span
               className={`block h-0.5 w-6 bg-white transition-all ${menuAbierto ? "rotate-45 translate-y-2" : ""}`}
@@ -73,9 +90,9 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* MENÚ DESPLEGABLE */}
+        {/* Panel de navegación móvil */}
         <div
-          className={`absolute top-full left-0 w-full bg-zinc-900/90 backdrop-blur-xl border-b border-zinc-800 overflow-hidden transition-all duration-300 ${
+          className={`absolute top-full left-0 w-full bg-zinc-900/60 backdrop-blur-xl border-b border-zinc-700 overflow-hidden transition-all duration-300 ${
             menuAbierto
               ? "max-h-64 opacity-100"
               : "max-h-0 opacity-0 pointer-events-none"
@@ -95,20 +112,6 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
-
-      <style jsx>{`
-        @keyframes slide {
-          0% {
-            transform: translateX(0%);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        .animate-slide {
-          animation: slide 12s linear infinite;
-        }
-      `}</style>
     </header>
   );
 }
