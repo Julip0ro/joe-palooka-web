@@ -4,6 +4,7 @@ import "./globals.css";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import FloatingActions from "@/components/FloatingActions";
+import ScrollToTopOnRouteChange from "@/components/ScrollToTopOnRouteChange";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +32,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen bg-3d-grid text-zinc-50`}
       >
+        <ScrollToTopOnRouteChange />
         <Navbar />
         <main className="grow relative z-10">{children}</main>
         <FloatingActions></FloatingActions>
