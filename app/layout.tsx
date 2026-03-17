@@ -32,7 +32,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen bg-3d-grid text-zinc-50`}
       >
         <Navbar />
-        {/* Sin animaciones aquí para que la Navbar no parpadee */}
         <main className="grow relative z-10">{children}</main>
         <FloatingActions></FloatingActions>
         <Footer />
