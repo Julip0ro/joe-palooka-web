@@ -22,13 +22,24 @@ export default function PreciosPage() {
       {/* CONTENIDO PRINCIPAL */}
       <div className="relative z-20 pb-10 pt-10">
         <Reveal delay={100}>
-          <h1 className="text-white text-center text-[15vw] md:text-6xl font-[family-name:var(--font-archivo)] uppercase mb-10 md:mb-5 leading-tight tracking-tighter">
+          {/* mb-2 para cel (bien pegado), md:mb-5 para laptop */}
+          <h1 className="text-white text-center text-[15vw] md:text-6xl font-[family-name:var(--font-archivo)] uppercase mb-2 md:mb-5 leading-tight tracking-tighter">
             Planes
           </h1>
         </Reveal>
 
-        {/* SECCIÓN: CONTENEDOR DE PLANES DE MEMBRESÍA (DESTACADOS) */}
-        <div className="flex flex-col md:flex-row gap-8 justify-center items-center md:items-stretch p-4">
+        <Reveal delay={200}>
+          {/* mb-6 para cel, md:mb-12 para laptop. Eliminamos espacios extra en móvil */}
+          <p className="text-[10px] md:text-xs font-[family-name:var(--font-inter)] font-bold tracking-[0.2em] text-zinc-300 max-w-[90vw] md:max-w-none leading-relaxed text-center mx-auto mb-6 md:mb-12 uppercase">
+            <span className="inline-block md:whitespace-nowrap">
+              Acceso libre a todos los turnos con cualquiera de nuestros planes
+            </span>
+          </p>
+        </Reveal>
+
+        {/* SECCIÓN: CONTENEDOR DE PLANES DE MEMBRESÍA */}
+        {/* Ajustamos el padding de cel a p-2 para que no empuje la carta hacia abajo */}
+        <div className="flex flex-col md:flex-row gap-8 justify-center items-center md:items-stretch p-2 md:p-4">
           {/* CARD 1 */}
           <Reveal
             delay={200}
@@ -52,14 +63,14 @@ export default function PreciosPage() {
                 <p className="text-zinc-500 text-[10px] uppercase font-bold tracking-widest mb-1">
                   Desde
                 </p>
-                <p className="text-zinc-500 text-sm line-through decoration-zinc-500 h-5">
+                <p className="text-zinc-100 text-sm line-through decoration-zinc-300 h-5">
                   S/ 750
                 </p>
                 <div className="flex items-center gap-3">
                   <span className="text-yellow-300 text-4xl font-black">
                     S/ 500
                   </span>
-                  <span className="text-yellow-300 text-[10px] font-bold bg-yellow-500/10 px-2 py-1 rounded">
+                  <span className="text-black text-[10px] font-bold bg-yellow-300 px-2 py-1 rounded">
                     33 % OFF
                   </span>
                 </div>
@@ -67,7 +78,7 @@ export default function PreciosPage() {
                   Mensualidad con mejor costo beneficio
                 </p>
                 <p className="text-zinc-400 text-[10px] mt-1 uppercase tracking-wider font-bold">
-                  Lunes a viernes por 3 meses
+                  Lunes a sábado por 3 meses
                 </p>
               </div>
             </div>
@@ -141,21 +152,22 @@ export default function PreciosPage() {
                     Plan Escolar
                   </h2>
                   <p className="text-zinc-200 text-sm mt-2 leading-tight font-medium">
-                    Entrena 3 veces por semana.
+                    Entrena 3 veces por semana en cualquiera de nuestros
+                    horarios.
                   </p>
                 </div>
                 <div className="mb-8 min-h-[140px] flex flex-col justify-end">
                   <p className="text-zinc-400 text-[10px] uppercase font-bold tracking-widest mb-1">
                     Desde
                   </p>
-                  <p className="text-zinc-500 text-sm line-through decoration-zinc-500 h-5">
+                  <p className="text-zinc-100 text-sm line-through decoration-zinc-400 h-5">
                     S/ 180
                   </p>
                   <div className="flex items-center gap-3">
                     <span className="text-white text-4xl font-black">
                       S/ 120
                     </span>
-                    <span className="text-red-500 text-[10px] font-bold bg-red-500/10 px-2 py-1 rounded">
+                    <span className="text-white text-[10px] font-bold bg-red-600 px-2 py-1 rounded">
                       30 % OFF
                     </span>
                   </div>
@@ -182,7 +194,7 @@ export default function PreciosPage() {
         {/* NOTAS LEGALES */}
         <Reveal
           delay={500}
-          className="mt-2 max-w-md md:max-w-4xl mx-auto px-6 mb-10 text-center"
+          className="mt-10 max-w-md md:max-w-4xl mx-auto px-6 mb-10 text-center"
         >
           <p className="text-zinc-300 text-[11px] md:text-xs font-medium leading-relaxed">
             * No hay reembolsos ni acumulación de sesiones para el mes

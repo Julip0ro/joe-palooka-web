@@ -49,12 +49,11 @@ export default function Home() {
           {/* Descripción en Inter */}
           <Reveal delay={600}>
             <p className="text-zinc-400 text-[11px] md:text-base lg:text-lg max-w-[260px] md:max-w-xl mb-8 md:mb-10 leading-relaxed font-medium">
-              Entrena en{" "}
+              Domina el arte del boxeo en{" "}
               <span className="text-white border-b border-red-600">
                 Joe Palooka
               </span>
-              . Uno de los mejores gimnasios dedicados al boxeo de santiago de
-              surco.
+              . El centro de alto rendimiento referente en Santiago de Surco.
             </p>
           </Reveal>
 

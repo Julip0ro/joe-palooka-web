@@ -51,15 +51,16 @@ export default function HorariosPage() {
       <div className="relative z-20 w-full flex flex-col items-center">
         {/* Título en Archivo Black con tipografía fluida */}
         <Reveal delay={100}>
-          <h1 className="text-white text-center text-[15vw] md:text-6xl font-[family-name:var(--font-archivo)] uppercase mb-0 md:mb-1 leading-tight tracking-tighter">
+          <h1 className="text-center text-[15vw] md:text-6xl font-[family-name:var(--font-archivo)] uppercase mb-3 md:mb-6 leading-tight tracking-tighter">
             horarios
           </h1>
         </Reveal>
 
         <Reveal delay={200}>
-          <p className="text-xs text-zinc-400 max-w-md mt-5 leading-relaxed text-center mx-auto mb-8">
-            <span className="text-zinc-50 font-bold">Sin turnos fijos:</span>{" "}
-            Elige el horario que quieras con cualquiera de nuestros planes.
+          <p className="text-[10px] md:text-xs font-[family-name:var(--font-inter)] font-bold tracking-[0.2em] text-zinc-300 max-w-[90vw] md:max-w-none leading-relaxed text-center mx-auto mb-6 md:mb-12 uppercase">
+            <span className="inline-block md:whitespace-nowrap">
+              HORARIOS COMPLETAMENTE FLEXIBLES
+            </span>
           </p>
         </Reveal>
 
