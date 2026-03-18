@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+:root {
+  --font-inter: "Inter", sans-serif;
+  --font-archivo: "Archivo Black", sans-serif;
+}
+
 /* 1. Definimos los colores base para que no haya conflictos */
 :root {
   --background: #09090b; /* Sincronizado con tu bg-3d-grid */

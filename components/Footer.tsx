@@ -5,7 +5,7 @@ import { Instagram, Facebook, MessageCircle, Music2 } from "lucide-react";
 
 /**
  * Footer - Componente de cierre de página.
- * Mantiene alineación central en móviles y lateral (derecha/izquierda) en desktop.
+ * Tipografía: Archivo Black para marca, Inter para navegación y datos técnicos.
  */
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -41,7 +41,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="w-full bg-zinc-950 selection:bg-red-600/30">
+    <footer className="w-full bg-zinc-950 selection:bg-red-600/30 font-[family-name:var(--font-inter)]">
       {/* SECCIÓN: BARRA SOCIAL */}
       <section className="w-full bg-black border-t border-zinc-800/90 py-10">
         <div className="max-w-7xl mx-auto px-6 flex flex-col items-center">
@@ -74,24 +74,24 @@ export default function Footer() {
       <div className="w-full bg-zinc-900/80 border-t border-zinc-900/50 pt-12 pb-28 md:pb-10">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-12 text-center md:text-left">
-            {/* Identidad */}
+            {/* Identidad - ARCHIVO BLACK */}
             <div className="flex flex-col items-center md:items-start">
-              <h2 className="text-base font-black uppercase text-zinc-50 tracking-tight">
+              <h2 className="text-base font-black uppercase text-zinc-50 tracking-tight font-[family-name:var(--font-archivo)]">
                 Joe Palooka
               </h2>
-              <p className="text-zinc-500 text-[10px] uppercase tracking-[0.25em] mt-1">
+              <p className="text-zinc-500 text-[10px] uppercase tracking-[0.25em] mt-1 font-bold">
                 Santiago de Surco · Lima
               </p>
               <div className="w-12 h-px bg-red-600 mt-4" />
             </div>
 
-            {/* Navegación y Contacto */}
+            {/* Navegación y Contacto - INTER */}
             <div className="flex gap-12 md:gap-20">
               <nav className="flex flex-col gap-4">
                 <p className="text-white text-[11px] font-bold uppercase tracking-widest">
                   Navegación
                 </p>
-                <div className="flex flex-col gap-2 text-zinc-400 text-[10px] uppercase tracking-[0.2em]">
+                <div className="flex flex-col gap-2 text-zinc-400 text-[10px] uppercase tracking-[0.2em] font-medium">
                   {NAV_LINKS.map((link) => (
                     <Link
                       key={link.href}
@@ -108,7 +108,7 @@ export default function Footer() {
                 <p className="text-white text-[11px] font-bold uppercase tracking-widest">
                   Contacto
                 </p>
-                <div className="flex flex-col gap-2 text-zinc-400 text-[10px] uppercase tracking-[0.2em]">
+                <div className="flex flex-col gap-2 text-zinc-400 text-[10px] uppercase tracking-[0.2em] font-medium">
                   <a
                     href="https://wa.me/51980775633"
                     target="_blank"
@@ -124,8 +124,8 @@ export default function Footer() {
 
           <div className="w-full h-px bg-zinc-900 my-10" />
 
-          {/* Copyright */}
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-zinc-600 text-[9px] uppercase tracking-[0.25em]">
+          {/* Copyright - INTER */}
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-zinc-600 text-[9px] uppercase tracking-[0.25em] font-bold">
             <p>© {currentYear} Joe Palooka Boxing</p>
             <p className="hidden md:block">Todos los derechos reservados</p>
           </div>

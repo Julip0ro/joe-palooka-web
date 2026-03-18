@@ -4,52 +4,41 @@ import Reveal from "@/components/Reveal";
 
 /**
  * ContactoPage - Gestión de canales de atención y ubicación.
- * Secciones: Hero con Media Background (2m.png), Info Grid y Mapa Dinámico.
+ * Tipografía: Archivo Black para títulos, Inter para el cuerpo y datos.
  */
 export default function ContactoPage() {
   return (
     <main className="min-h-screen bg-zinc-950 selection:bg-red-600/30">
-      {/* SECCIÓN 1: HERO DE CONTACTO - Fondo dinámico con fundido a negro */}
+      {/* SECCIÓN 1: HERO DE CONTACTO */}
       <section className="relative w-full pt-10 pb-16 px-6">
-        {/* MEDIA ASSETS: Background con tratamiento de reflejo y escala de grises */}
         <div
           className="absolute inset-0 z-0 opacity-30 grayscale pointer-events-none"
           style={{
             backgroundImage: "url('/img/2m.png')",
             backgroundSize: "cover",
             backgroundPosition: "center 30%",
-            transform: "scaleX(-1)", // Reflejo horizontal para composición visual
+            transform: "scaleX(-1)",
           }}
           aria-hidden="true"
         />
 
-        {/* OVERLAY: Gradiente de profundidad para transición suave hacia el fondo del main */}
         <div className="absolute inset-0 z-10 bg-gradient-to-t from-zinc-950 via-zinc-950/70 to-transparent pointer-events-none" />
 
         <div className="relative z-20">
-          <Reveal>
-            <div className="flex items-center justify-center gap-4 mb-6">
-              <div className="h-px w-16 bg-red-800" />
-              <span className="text-[10px] tracking-[0.3em] text-red-500 uppercase font-bold">
-                Gym Joe Palooka
-              </span>
-              <div className="h-px w-16 bg-red-800" />
-            </div>
-          </Reveal>
-
           <Reveal delay={100}>
-            <h1 className="text-white text-center text-3xl font-bold uppercase mb-10 tracking-tight">
-              Contacto
+            {/* Título en Archivo Black con tipografía fluida */}
+            <h1 className="text-white text-center text-[15vw] md:text-6xl font-[family-name:var(--font-archivo)] uppercase mb-10 md:mb-15 leading-tight tracking-tighter">
+              contacto
             </h1>
           </Reveal>
 
-          {/* GRID DE INFORMACIÓN: Datos de contacto y Mapa integrado */}
           <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
             <Reveal
               delay={200}
               className="flex flex-col items-center md:items-start text-center md:text-left space-y-8"
             >
-              <p className="text-zinc-200 max-w-sm leading-relaxed font-medium">
+              {/* Texto en Inter */}
+              <p className="text-zinc-200 max-w-sm leading-relaxed font-[family-name:var(--font-inter)] font-medium">
                 Únete a la familia Joe Palooka. Estamos listos para entrenar
                 contigo.
               </p>
@@ -57,7 +46,7 @@ export default function ContactoPage() {
               <div className="w-full max-w-sm h-px bg-zinc-700" />
 
               <div className="space-y-6 w-full max-w-sm">
-                {/* UBICACIÓN FÍSICA */}
+                {/* UBICACIÓN */}
                 <div className="flex gap-4 items-start text-left">
                   <svg
                     className="w-5 h-5 text-red-600 shrink-0 mt-0.5"
@@ -73,7 +62,7 @@ export default function ContactoPage() {
                     />
                     <circle cx="12" cy="11" r="2.5" />
                   </svg>
-                  <div>
+                  <div className="font-[family-name:var(--font-inter)]">
                     <h4 className="text-white font-bold uppercase text-xs tracking-[0.2em]">
                       Ubicación
                     </h4>
@@ -86,12 +75,12 @@ export default function ContactoPage() {
 
                 <div className="h-px bg-zinc-700" />
 
-                {/* CANAL WHATSAPP */}
+                {/* WHATSAPP */}
                 <a
                   href="https://wa.me/51980775633"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex gap-4 items-start group text-left transition-transform active:scale-95"
+                  className="flex gap-4 items-start group text-left transition-transform active:scale-95 font-[family-name:var(--font-inter)]"
                 >
                   <svg
                     className="w-5 h-5 text-red-600 shrink-0 mt-0.5"
@@ -116,8 +105,8 @@ export default function ContactoPage() {
 
                 <div className="h-px bg-zinc-700" />
 
-                {/* CANALES SOCIALES */}
-                <div className="flex gap-4 items-start text-left">
+                {/* REDES SOCIALES */}
+                <div className="flex gap-4 items-start text-left font-[family-name:var(--font-inter)]">
                   <svg
                     className="w-5 h-5 text-red-600 shrink-0 mt-0.5"
                     fill="none"
@@ -138,7 +127,7 @@ export default function ContactoPage() {
                         href="https://www.instagram.com/joe.palooka"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-zinc-300 hover:text-white uppercase text-[10px] font-black tracking-[0.25em] border-b border-zinc-800 pb-1 hover:border-red-600 transition-all"
+                        className="text-zinc-300 hover:text-white uppercase text-[10px] font-bold tracking-[0.25em] border-b border-zinc-800 pb-1 hover:border-red-600 transition-all"
                       >
                         Instagram
                       </a>
@@ -146,7 +135,7 @@ export default function ContactoPage() {
                         href="https://www.facebook.com/gimnasio.palooka"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-zinc-300 hover:text-white uppercase text-[10px] font-black tracking-[0.25em] border-b border-zinc-800 pb-1 hover:border-blue-600 transition-all"
+                        className="text-zinc-300 hover:text-white uppercase text-[10px] font-bold tracking-[0.25em] border-b border-zinc-800 pb-1 hover:border-blue-600 transition-all"
                       >
                         Facebook
                       </a>
@@ -156,7 +145,7 @@ export default function ContactoPage() {
               </div>
             </Reveal>
 
-            {/* MAPA DINÁMICO: Renderizado con filtros CSS para coherencia visual */}
+            {/* MAPA */}
             <Reveal delay={300} className="w-full">
               <div className="w-full h-[320px] md:h-[400px] rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-2xl">
                 <iframe
@@ -171,12 +160,12 @@ export default function ContactoPage() {
         </div>
       </section>
 
-      {/* SECCIÓN 2: REFERENCIAS DE LOCALIZACIÓN */}
-      <section className="px-6 pb-16">
+      {/* SECCIÓN 2: ENCUÉNTRANOS */}
+      <section className="px-6 pb-16 font-[family-name:var(--font-inter)]">
         <Reveal delay={100}>
           <div className="flex items-center justify-center gap-4 mb-6 mt-12">
             <div className="h-px w-16 bg-red-800" />
-            <span className="text-[10px] tracking-[0.3em] text-red-500 uppercase font-medium">
+            <span className="text-[10px] tracking-[0.3em] text-red-500 uppercase font-bold">
               donde buscarnos
             </span>
             <div className="h-px w-16 bg-red-800" />
@@ -184,7 +173,8 @@ export default function ContactoPage() {
         </Reveal>
 
         <Reveal delay={200}>
-          <h2 className="text-white text-center text-3xl font-bold uppercase mb-10">
+          {/* Título de sección en Archivo Black pero más pequeño/contenido */}
+          <h2 className="text-white text-center text-3xl font-[family-name:var(--font-archivo)] uppercase mb-10 tracking-tight">
             encuentranos
           </h2>
         </Reveal>
@@ -201,7 +191,7 @@ export default function ContactoPage() {
             >
               <div className="w-full h-full bg-black/85 px-6 py-12 md:py-20 flex flex-col items-center text-center">
                 <div className="max-w-lg">
-                  <h3 className="text-white text-xs uppercase tracking-[0.3em] font-black mb-4">
+                  <h3 className="text-white text-xs uppercase tracking-[0.3em] font-bold mb-4">
                     ¿Dónde estamos?
                   </h3>
                   <p className="text-zinc-300 text-sm md:text-base leading-relaxed mb-8">
@@ -216,26 +206,26 @@ export default function ContactoPage() {
                     .
                   </p>
 
-                  <h3 className="text-white text-xs uppercase tracking-[0.3em] font-black mb-4">
+                  <h3 className="text-white text-xs uppercase tracking-[0.3em] font-bold mb-4">
                     Horarios de atención
                   </h3>
                   <p className="text-zinc-300 text-sm md:text-base leading-relaxed mb-10">
                     De{" "}
-                    <span className="text-red-600 font-black">
+                    <span className="text-red-600 font-bold">
                       lunes a sábado
                     </span>{" "}
                     de{" "}
                     <span className="text-white font-bold">
                       7:00 AM a 8:00 PM
                     </span>
-                    . Los domingos descansamos para volver con todo el lunes.
+                    .
                   </p>
 
                   <a
                     href="https://www.google.com/maps/search/?api=1&query=Calle+Doña+Elsa+157+Surco"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block bg-white text-black px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all transform hover:scale-105 active:scale-95 shadow-xl"
+                    className="inline-block bg-white text-black px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all transform hover:scale-105 active:scale-95 shadow-xl"
                   >
                     Abrir en Google Maps
                   </a>

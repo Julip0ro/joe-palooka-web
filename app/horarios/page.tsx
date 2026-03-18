@@ -7,8 +7,7 @@ import Reveal from "@/components/Reveal";
 
 /**
  * HorariosPage - Gestión de cronograma semanal.
- * Funcionalidad: Detecta el día actual y realiza scroll automático hacia el elemento correspondiente.
- * Estética: Background industrial con fundido a negro y acordeones interactivos.
+ * Tipografía: Archivo Black para títulos, Inter para el cuerpo y datos.
  */
 export default function HorariosPage() {
   const router = useRouter();
@@ -28,7 +27,6 @@ export default function HorariosPage() {
 
   /**
    * Efecto de posicionamiento inicial.
-   * Realiza un scroll suave hacia el día actual tras un breve delay para permitir el renderizado del DOM.
    */
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -38,8 +36,8 @@ export default function HorariosPage() {
   }, []);
 
   return (
-    <main className="relative flex flex-col items-center min-h-screen pt-10 p-6 md:p-10 overflow-hidden bg-zinc-950 selection:bg-red-600/30">
-      {/* MEDIA ASSETS: Hero Background dinámico */}
+    <main className="relative flex flex-col items-center min-h-screen pt-10 p-6 md:p-10 overflow-hidden bg-zinc-950 selection:bg-red-600/30 font-[family-name:var(--font-inter)]">
+      {/* MEDIA ASSETS */}
       <div
         className="absolute top-0 left-0 w-full h-[65vh] z-0 opacity-30 grayscale pointer-events-none 
                    bg-[url('/img/4m.png')] bg-cover 
@@ -47,26 +45,15 @@ export default function HorariosPage() {
         aria-hidden="true"
       />
 
-      {/* OVERLAY: Gradiente de profundidad */}
       <div className="absolute top-0 left-0 w-full h-[65vh] z-10 bg-gradient-to-b from-transparent to-zinc-950 pointer-events-none" />
 
       {/* CONTENIDO PRINCIPAL */}
       <div className="relative z-20 w-full flex flex-col items-center">
-        {/* HEADER DE SECCIÓN */}
-        <Reveal>
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <div className="h-px w-16 bg-red-800" />
-            <span className="text-[10px] tracking-[0.3em] text-red-500 uppercase font-bold">
-              Gym Joe Palooka
-            </span>
-            <div className="h-px w-16 bg-red-800" />
-          </div>
-        </Reveal>
-
+        {/* Título en Archivo Black con tipografía fluida */}
         <Reveal delay={100}>
-          <h2 className="text-3xl font-bold uppercase text-white tracking-tighter text-center">
-            Horarios
-          </h2>
+          <h1 className="text-white text-center text-[15vw] md:text-6xl font-[family-name:var(--font-archivo)] uppercase mb-0 md:mb-1 leading-tight tracking-tighter">
+            horarios
+          </h1>
         </Reveal>
 
         <Reveal delay={200}>
@@ -76,7 +63,7 @@ export default function HorariosPage() {
           </p>
         </Reveal>
 
-        {/* LISTADO DE CRONOGRAMA (DIAS) */}
+        {/* LISTADO DE CRONOGRAMA */}
         <div className="w-full max-w-2xl flex flex-col gap-6 mx-auto">
           {cronograma.map((item, index) => {
             const esHoy = item.dia === hoy;
@@ -89,10 +76,10 @@ export default function HorariosPage() {
                   className="group bg-zinc-950/70 border border-zinc-700 rounded-sm scroll-mt-[130px] transition-all overflow-hidden"
                 >
                   <summary className="list-none p-6 cursor-pointer flex justify-between items-center hover:bg-zinc-100/10 transition-colors">
-                    <h3 className="font-bold text-xl uppercase text-white flex items-center tracking-tight">
+                    <h3 className="font-bold text-xl uppercase text-white flex items-center tracking-tight font-[family-name:var(--font-archivo)]">
                       {item.dia}
                       {esHoy && (
-                        <span className="ml-3 text-[10px] bg-red-600 text-white px-2 py-1 rounded-full font-black leading-none">
+                        <span className="ml-3 text-[10px] bg-red-600 text-white px-2 py-1 rounded-full font-bold leading-none font-[family-name:var(--font-inter)]">
                           HOY
                         </span>
                       )}
@@ -107,18 +94,17 @@ export default function HorariosPage() {
                   </summary>
 
                   <div className="px-6 pb-6 pt-2 flex flex-col gap-4">
-                    <p className="font-black text-zinc-500 text-[11px] tracking-[0.2em]">
+                    <p className="font-black text-zinc-500 text-[11px] tracking-[0.2em] uppercase">
                       SESIÓN: 60 a 90 MIN
                     </p>
 
-                    {/* LISTADO DE BLOQUES HORARIOS */}
                     {item.clases.map((clase, idx) => (
                       <div
                         key={idx}
                         className="bg-zinc-800/70 border-l-4 border-red-600 p-4 shadow-inner flex justify-between items-center"
                       >
                         <div>
-                          <span className="text-[16px] font-black text-zinc-100">
+                          <span className="text-[16px] font-bold text-zinc-100">
                             {clase.horario}
                           </span>
                           <p className="text-[13px] text-red-600 font-bold uppercase mt-1 tracking-wide">

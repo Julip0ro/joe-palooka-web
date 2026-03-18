@@ -7,7 +7,7 @@ import Reveal from "@/components/Reveal";
  */
 export default function PreciosPage() {
   return (
-    <main className="relative min-h-screen bg-zinc-950 selection:bg-red-600/30 overflow-hidden">
+    <main className="relative min-h-screen bg-zinc-950 selection:bg-red-600/30 overflow-hidden font-[family-name:var(--font-inter)]">
       {/* BACKGROUND ASSETS: Imagen 1m.png Reflejada */}
       <div
         className="absolute top-0 left-0 w-full h-[60%] z-0 opacity-40 grayscale pointer-events-none bg-[position:60%_40%] md:bg-[position:center_40%]"
@@ -21,20 +21,9 @@ export default function PreciosPage() {
 
       {/* CONTENIDO PRINCIPAL */}
       <div className="relative z-20 pb-10 pt-10">
-        {/* REFERENCIA SUPERIOR */}
-        <Reveal className="flex items-center justify-center gap-4 mb-6">
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <div className="h-px w-16 bg-red-800" />
-            <span className="text-[10px] tracking-[0.3em] text-red-500 uppercase">
-              Gym Joe Palooka
-            </span>
-            <div className="h-px w-16 bg-red-800" />
-          </div>
-        </Reveal>
-
         <Reveal delay={100}>
-          <h1 className="text-white text-center text-3xl font-bold uppercase mb-6">
-            elige tu plan
+          <h1 className="text-white text-center text-[15vw] md:text-6xl font-[family-name:var(--font-archivo)] uppercase mb-10 md:mb-5 leading-tight tracking-tighter">
+            Planes
           </h1>
         </Reveal>
 
@@ -51,7 +40,7 @@ export default function PreciosPage() {
               </div>
               <div className="absolute inset-0 z-0 rounded-[2rem] blur-[10px] bg-[conic-gradient(from_225deg_at_48%_52%,rgba(253,224,71,0.25)_0%,transparent_22%,rgba(253,224,71,0.18)_48%,transparent_72%,rgba(253,224,71,0.25)_100%)] opacity-80 pointer-events-none" />
               <div className="relative z-10 mb-8 min-h-[80px]">
-                <h2 className="text-yellow-300 text-2xl font-black uppercase">
+                <h2 className="text-yellow-300 text-2xl font-black uppercase font-[family-name:var(--font-archivo)] tracking-tighter">
                   MEMBRESIA
                 </h2>
                 <p className="text-white text-sm mt-2 leading-tight font-medium">
@@ -102,7 +91,7 @@ export default function PreciosPage() {
               <div className="pointer-events-none absolute inset-[1px] rounded-[2rem] border border-white/5" />
               <div>
                 <div className="mb-8 min-h-[80px]">
-                  <h2 className="text-white text-2xl font-black uppercase">
+                  <h2 className="text-white text-2xl font-black uppercase font-[family-name:var(--font-archivo)] tracking-tighter">
                     Estandar x3
                   </h2>
                   <p className="text-zinc-200 text-sm mt-2 leading-tight font-medium">
@@ -148,7 +137,7 @@ export default function PreciosPage() {
               <div className="pointer-events-none absolute inset-[1px] rounded-[2rem] border border-white/5" />
               <div>
                 <div className="mb-8 min-h-[80px]">
-                  <h2 className="text-red-600 text-2xl font-black uppercase">
+                  <h2 className="text-red-600 text-2xl font-black uppercase font-[family-name:var(--font-archivo)] tracking-tighter">
                     Plan Escolar
                   </h2>
                   <p className="text-zinc-200 text-sm mt-2 leading-tight font-medium">
@@ -215,7 +204,7 @@ export default function PreciosPage() {
         </Reveal>
 
         <Reveal delay={100}>
-          <h2 className="text-white text-center text-2xl md:text-3xl font-bold uppercase mb-10">
+          <h2 className="text-white text-center text-2xl md:text-3xl font-bold uppercase mb-10 font-[family-name:var(--font-archivo)] tracking-tight">
             más opciones
           </h2>
         </Reveal>
@@ -227,7 +216,7 @@ export default function PreciosPage() {
             className="bg-zinc-900/90 backdrop-blur-sm rounded-3xl p-6 pt-10 border border-zinc-800 flex flex-col justify-between hover:border-zinc-700 transition-colors"
           >
             <div>
-              <h3 className="text-white text-xl font-black uppercase">
+              <h3 className="text-white text-xl font-black uppercase font-[family-name:var(--font-archivo)] tracking-tight">
                 Estandar x2
               </h3>
               <p className="text-zinc-300 text-sm mt-2 leading-tight font-medium">
@@ -259,7 +248,7 @@ export default function PreciosPage() {
               Recomendado
             </div>
             <div>
-              <h3 className="text-white text-xl font-black uppercase">
+              <h3 className="text-white text-xl font-black uppercase font-[family-name:var(--font-archivo)] tracking-tight">
                 Lunes a sábado
               </h3>
               <p className="text-zinc-300 text-sm mt-2 leading-tight font-medium">
@@ -288,7 +277,7 @@ export default function PreciosPage() {
             className="bg-zinc-900/90 backdrop-blur-sm rounded-3xl p-6 pt-10 border border-zinc-800 flex flex-col justify-between hover:border-zinc-700 transition-colors"
           >
             <div>
-              <h3 className="text-white text-xl font-black uppercase">
+              <h3 className="text-white text-xl font-black uppercase font-[family-name:var(--font-archivo)] tracking-tight">
                 Lunes a viernes
               </h3>
               <p className="text-zinc-300 text-sm mt-2 leading-tight font-medium">
@@ -322,7 +311,7 @@ export default function PreciosPage() {
         </Reveal>
 
         <Reveal delay={100}>
-          <h2 className="text-white text-center text-2xl md:text-3xl font-bold uppercase mb-10">
+          <h2 className="text-white text-center text-2xl md:text-3xl font-bold uppercase mb-10 font-[family-name:var(--font-archivo)] tracking-tight">
             entrena a tu ritmo
           </h2>
         </Reveal>
@@ -334,7 +323,7 @@ export default function PreciosPage() {
             className="bg-zinc-900/90 backdrop-blur-sm rounded-3xl p-6 pt-10 border border-zinc-800 flex flex-col justify-between hover:border-zinc-700 transition-colors"
           >
             <div>
-              <h3 className="text-white text-xl font-black uppercase">
+              <h3 className="text-white text-xl font-black uppercase font-[family-name:var(--font-archivo)] tracking-tight">
                 Clase grupal
               </h3>
               <p className="text-zinc-300 text-sm mt-2 leading-tight font-medium">
@@ -363,7 +352,7 @@ export default function PreciosPage() {
             className="bg-zinc-900/90 backdrop-blur-sm rounded-3xl p-6 pt-10 border border-zinc-800 flex flex-col justify-between hover:border-zinc-700 transition-colors"
           >
             <div>
-              <h3 className="text-white text-xl font-black uppercase">
+              <h3 className="text-white text-xl font-black uppercase font-[family-name:var(--font-archivo)] tracking-tight">
                 Clase personal
               </h3>
               <p className="text-zinc-300 text-sm mt-2 leading-tight font-medium">
