@@ -3,33 +3,33 @@ import Reveal from "@/components/Reveal";
 
 /**
  * Página de Planes y Precios.
- * Incluye imagen de fondo 1m.png con tratamiento visual y gradientes de profundidad.
+ * Incluye imagen de fondo 8m.png con tratamiento visual y gradientes de profundidad.
  */
 export default function PreciosPage() {
   return (
     <main className="relative min-h-screen bg-zinc-950 selection:bg-red-600/30 overflow-hidden font-[family-name:var(--font-inter)]">
-      {/* BACKGROUND ASSETS: Imagen 1m.png Reflejada */}
+      {/* BACKGROUND ASSETS: Imagen Hero */}
       <div
         className="absolute top-0 left-0 w-full h-[60%] z-0 opacity-40 grayscale pointer-events-none bg-[position:60%_40%] md:bg-[position:center_40%]"
         style={{
           backgroundImage: "url('/img/8m.png')",
           backgroundSize: "cover",
         }}
+        aria-hidden="true"
       />
+
       {/* Gradiente para fundir el Hero con el resto del contenido */}
       <div className="absolute top-0 left-0 w-full h-[60%] z-10 bg-gradient-to-b from-transparent to-zinc-950 pointer-events-none" />
 
       {/* CONTENIDO PRINCIPAL */}
       <div className="relative z-20 pb-10 pt-10">
         <Reveal delay={100}>
-          {/* mb-2 para cel (bien pegado), md:mb-5 para laptop */}
           <h1 className="text-white text-center text-[15vw] md:text-6xl font-[family-name:var(--font-archivo)] uppercase mb-2 md:mb-5 leading-tight tracking-tighter">
             Planes
           </h1>
         </Reveal>
 
         <Reveal delay={200}>
-          {/* mb-6 para cel, md:mb-12 para laptop. Eliminamos espacios extra en móvil */}
           <p className="text-[10px] md:text-xs font-[family-name:var(--font-inter)] font-bold tracking-[0.2em] text-zinc-300 max-w-[90vw] md:max-w-none leading-relaxed text-center mx-auto mb-6 md:mb-12 uppercase">
             <span className="inline-block md:whitespace-nowrap">
               Acceso libre a todos los turnos con cualquiera de nuestros planes
@@ -38,7 +38,6 @@ export default function PreciosPage() {
         </Reveal>
 
         {/* SECCIÓN: CONTENEDOR DE PLANES DE MEMBRESÍA */}
-        {/* Ajustamos el padding de cel a p-2 para que no empuje la carta hacia abajo */}
         <div className="flex flex-col md:flex-row gap-8 justify-center items-center md:items-stretch p-2 md:p-4">
           {/* CARD 1 */}
           <Reveal

@@ -52,7 +52,6 @@ export default function ContactoPage() {
           >
             <div className="absolute top-6 left-6 bg-black/60 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full z-10">
               <p className="text-[9px] text-white uppercase font-bold tracking-[0.2em] flex items-center gap-2">
-                <span className="w-2 h-2 bg-red-600 rounded-full animate-pulse shadow-[0_0_8px_rgba(220,38,38,0.8)]" />
                 Surco, Lima
               </p>
             </div>
