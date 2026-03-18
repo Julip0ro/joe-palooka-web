@@ -31,7 +31,7 @@ export default function Home() {
           <Reveal delay={200}>
             <div className="flex items-center justify-center gap-3 md:gap-4 mb-4 md:mb-6">
               <div className="h-[1px] w-6 md:w-10 bg-red-600" />
-              <span className="text-[9px] md:text-[10px] tracking-[0.4em] md:tracking-[0.5em] text-zinc-500 uppercase font-black whitespace-nowrap">
+              <span className="text-[9px] md:text-[10px] tracking-[0.4em] md:tracking-[0.5em] text-zinc-300 uppercase font-black whitespace-nowrap">
                 Santiago de Surco
               </span>
               <div className="h-[1px] w-6 md:w-10 bg-red-600" />

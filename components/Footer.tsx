@@ -71,7 +71,7 @@ export default function Footer() {
       </section>
 
       {/* SECCIÓN: CONTENIDO PRINCIPAL */}
-      <div className="w-full border-t border-zinc-900/50 pt-12 pb-28 md:pb-10">
+      <div className="w-full bg-zinc-900/80 border-t border-zinc-900/50 pt-12 pb-28 md:pb-10">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-12 text-center md:text-left">
             {/* Identidad */}

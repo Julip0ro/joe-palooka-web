@@ -11,6 +11,10 @@ const NAV_LINKS = [
   { href: "/contacto", label: "Contacto" },
 ];
 
+/**
+ * Navbar - Sistema de navegación principal.
+ * Incluye variantes para escritorio y móvil con gestión de estados activos y barra promocional.
+ */
 export default function Navbar() {
   const [menuAbierto, setMenuAbierto] = useState(false);
   const pathname = usePathname();
@@ -20,55 +24,61 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-[100] w-full">
-      {/* NAVEGACIÓN DESKTOP */}
-      <nav className="hidden md:flex w-full bg-black/30 backdrop-blur-md border-b border-zinc-900/10 h-16 items-center px-6">
+      {/* NAVEGACIÓN DESKTOP: Layout con blur y bordes sutiles */}
+      <nav className="hidden md:flex w-full bg-black/70 backdrop-blur-md border-b border-white/10 h-16 items-center px-6">
         <div className="max-w-7xl mx-auto flex justify-between items-center w-full">
+          {/* Brand Identity */}
           <Link href="/" className="group flex items-center gap-3">
             <img
               src="/img/icono.png"
               alt="Logo Joe Palooka"
-              className="w-8 h-8 object-contain group-hover:scale-110 transition-transform"
+              className="w-8 h-8 object-contain transition-transform duration-300 group-hover:scale-110"
             />
-            <span className="text-white text-xl font-bold uppercase tracking-tight leading-none group-hover:text-red-600 transition-colors">
+            <span className="text-white text-xl font-bold uppercase tracking-tight leading-none transition-colors duration-300 group-hover:text-zinc-300">
               Joe Palooka
             </span>
           </Link>
 
-          <div className="flex gap-10 items-center">
+          {/* Navigation Links & CTA */}
+          <div className="flex gap-8 items-center">
             {NAV_LINKS.map((link) => {
               const isActive = pathname === link.href;
-
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`relative text-[13px] font-medium uppercase tracking-[0.2em] transition-colors group ${
-                    isActive ? "text-white" : "text-zinc-300 hover:text-white"
+                  className={`relative text-[13px] font-medium uppercase tracking-[0.2em] transition-colors duration-300 group ${
+                    isActive ? "text-white" : "text-zinc-400 hover:text-white"
                   }`}
                 >
                   {link.label}
                   <span
-                    className={`absolute left-0 -bottom-2 h-[2px] bg-red-600 transition-all duration-300 ${
+                    className={`absolute left-0 -bottom-2 h-[1px] bg-white/80 transition-all duration-300 ${
                       isActive ? "w-full" : "w-0 group-hover:w-full"
                     }`}
                   />
                 </Link>
               );
             })}
+
+            <Link
+              href="/contacto"
+              className="ml-4 px-4 py-2 text-[12px] font-bold uppercase tracking-widest border border-white/20 text-white hover:bg-white hover:text-black transition-all duration-300"
+            >
+              Clase gratis
+            </Link>
           </div>
         </div>
       </nav>
 
-      {/* FRANJA PROMOCIONAL */}
-      <div className="relative w-full h-5 flex justify-center items-center bg-red-600 text-white backdrop-blur-sm border-y border-red-800/40 select-none overflow-hidden">
-        <span className="relative px-5 text-[10px] font-medium uppercase tracking-[0.2em] text-center">
-          ¡PIDE TU CLASE DE PRUEBA!
-        </span>
+      {/* FRANJA PROMOCIONAL: Elemento de alto contraste para destacar la oferta principal */}
+      <div className="w-full h-5 flex justify-center items-center bg-white text-black text-[10px] uppercase tracking-[0.25em] border-b border-black/10 select-none">
+        Primera clase gratis
       </div>
 
-      {/* NAVEGACIÓN MÓVIL */}
+      {/* NAVEGACIÓN MÓVIL: Panel colapsable con efectos de desenfoque */}
       <nav className="md:hidden w-full">
-        <div className="relative bg-zinc-900 border-b border-zinc-700 h-16 px-6 flex justify-between items-center">
+        <div className="relative bg-black border-b border-white/10 h-16 px-6 flex justify-between items-center">
           <Link
             href="/"
             onClick={handleClose}
@@ -88,27 +98,22 @@ export default function Navbar() {
             aria-label="Menú principal"
           >
             <span
-              className={`block h-0.5 w-6 bg-white transition-all ${
-                menuAbierto ? "rotate-45 translate-y-2" : ""
-              }`}
+              className={`block h-0.5 w-6 bg-white transition-all ${menuAbierto ? "rotate-45 translate-y-2" : ""}`}
             />
             <span
-              className={`block h-0.5 w-6 bg-white transition-all ${
-                menuAbierto ? "opacity-0" : ""
-              }`}
+              className={`block h-0.5 w-6 bg-white transition-all ${menuAbierto ? "opacity-0" : ""}`}
             />
             <span
-              className={`block h-0.5 w-6 bg-white transition-all ${
-                menuAbierto ? "-rotate-45 -translate-y-2" : ""
-              }`}
+              className={`block h-0.5 w-6 bg-white transition-all ${menuAbierto ? "-rotate-45 -translate-y-2" : ""}`}
             />
           </button>
         </div>
 
+        {/* Panel desplegable móvil */}
         <div
-          className={`absolute top-full left-0 w-full bg-zinc-900/60 backdrop-blur-xl border-b border-zinc-700 overflow-hidden transition-all duration-300 ${
+          className={`absolute top-full left-0 w-full bg-black/80 backdrop-blur-xl border-b border-white/10 overflow-hidden transition-all duration-300 ${
             menuAbierto
-              ? "max-h-64 opacity-100"
+              ? "max-h-screen opacity-100"
               : "max-h-0 opacity-0 pointer-events-none"
           }`}
         >
@@ -119,12 +124,22 @@ export default function Navbar() {
                 href={link.href}
                 onClick={handleClose}
                 className={`font-bold uppercase tracking-widest text-lg transition-colors ${
-                  pathname === link.href ? "text-red-600" : "text-white"
+                  pathname === link.href
+                    ? "text-white"
+                    : "text-zinc-400 hover:text-white"
                 }`}
               >
                 {link.label}
               </Link>
             ))}
+
+            <Link
+              href="/contacto"
+              onClick={handleClose}
+              className="mt-2 px-5 py-2 border border-white/20 text-white text-sm uppercase tracking-widest hover:bg-white hover:text-black transition-all"
+            >
+              Clase gratis
+            </Link>
           </div>
         </div>
       </nav>

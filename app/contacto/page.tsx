@@ -1,229 +1,250 @@
 "use client";
+
 import Reveal from "@/components/Reveal";
 
+/**
+ * ContactoPage - Gestión de canales de atención y ubicación.
+ * Secciones: Hero con Media Background (2m.png), Info Grid y Mapa Dinámico.
+ */
 export default function ContactoPage() {
   return (
-    <main className="min-h-screen pb-16 pt-10 px-6">
-      {/* HEADER */}
-      <Reveal>
-        <div className="flex items-center justify-center gap-4 mb-6">
-          <div className="h-px w-16 bg-red-800" />
-          <span className="text-[10px] tracking-[0.3em] text-red-500 uppercase">
-            Gym Joe Palooka
-          </span>
-          <div className="h-px w-16 bg-red-800" />
-        </div>
-      </Reveal>
+    <main className="min-h-screen bg-zinc-950 selection:bg-red-600/30">
+      {/* SECCIÓN 1: HERO DE CONTACTO - Fondo dinámico con fundido a negro */}
+      <section className="relative w-full pt-10 pb-16 px-6">
+        {/* MEDIA ASSETS: Background con tratamiento de reflejo y escala de grises */}
+        <div
+          className="absolute inset-0 z-0 opacity-30 grayscale pointer-events-none"
+          style={{
+            backgroundImage: "url('/img/2m.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center 30%",
+            transform: "scaleX(-1)", // Reflejo horizontal para composición visual
+          }}
+          aria-hidden="true"
+        />
 
-      <Reveal delay={100}>
-        <h1 className="text-white text-center text-3xl font-bold uppercase mb-10">
-          Contacto
-        </h1>
-      </Reveal>
+        {/* OVERLAY: Gradiente de profundidad para transición suave hacia el fondo del main */}
+        <div className="absolute inset-0 z-10 bg-gradient-to-t from-zinc-950 via-zinc-950/70 to-transparent pointer-events-none" />
 
-      {/* GRID PRINCIPAL */}
-      <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-        {/* INFO */}
-        <Reveal
-          delay={200}
-          className="flex flex-col items-center md:items-start text-center md:text-left space-y-8"
-        >
-          <p className="text-zinc-400 max-w-sm leading-relaxed">
-            Únete a la familia Joe Palooka. Estamos listos para entrenar
-            contigo.
-          </p>
-
-          <div className="w-full max-w-sm h-px bg-zinc-700" />
-
-          <div className="space-y-6 w-full max-w-sm">
-            {/* UBICACIÓN */}
-            <div className="flex gap-4 items-start text-left">
-              <svg
-                className="w-5 h-5 text-red-600"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 21s-7-4.35-7-10a7 7 0 1114 0c0 5.65-7 10-7 10z"
-                />
-                <circle cx="12" cy="11" r="2.5" />
-              </svg>
-              <div>
-                <h4 className="text-white font-bold uppercase text-xs tracking-[0.2em]">
-                  Ubicación
-                </h4>
-                <div className="w-10 h-px bg-red-600 mt-1 mb-2" />
-                <p className="text-zinc-400 text-sm">
-                  Doña Elsa 157, Santiago de Surco
-                </p>
-              </div>
+        <div className="relative z-20">
+          <Reveal>
+            <div className="flex items-center justify-center gap-4 mb-6">
+              <div className="h-px w-16 bg-red-800" />
+              <span className="text-[10px] tracking-[0.3em] text-red-500 uppercase font-bold">
+                Gym Joe Palooka
+              </span>
+              <div className="h-px w-16 bg-red-800" />
             </div>
+          </Reveal>
 
-            <div className="h-px bg-zinc-700" />
+          <Reveal delay={100}>
+            <h1 className="text-white text-center text-3xl font-bold uppercase mb-10 tracking-tight">
+              Contacto
+            </h1>
+          </Reveal>
 
-            {/* WHATSAPP */}
-            <a
-              href="https://wa.me/51980775633"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex gap-4 items-start group text-left"
+          {/* GRID DE INFORMACIÓN: Datos de contacto y Mapa integrado */}
+          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+            <Reveal
+              delay={200}
+              className="flex flex-col items-center md:items-start text-center md:text-left space-y-8"
             >
-              <svg
-                className="w-5 h-5 text-red-600"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path d="M12 2a10 10 0 00-8.66 15l-1.3 4.75L6.9 20.5A10 10 0 1012 2zm4.91 13.41c-.2.56-1.17 1.1-1.6 1.15-.41.05-.92.07-1.48-.11-.34-.11-.78-.25-1.35-.49-2.37-1.03-3.92-3.44-4.04-3.6-.12-.17-.96-1.27-.96-2.42 0-1.15.6-1.71.81-1.94.21-.23.46-.29.61-.29.15 0 .31.01.44.01.14 0 .32-.05.5.38.2.48.68 1.66.74 1.78.06.12.1.27.02.44-.07.17-.11.27-.22.41-.11.14-.23.31-.33.41-.11.11-.22.22-.09.43.13.21.59.98 1.27 1.59.87.78 1.61 1.02 1.84 1.13.23.11.36.09.49-.05.13-.14.56-.65.71-.87.15-.23.3-.19.5-.11.21.08 1.33.63 1.56.74.23.11.38.17.43.26.05.09.05.52-.15 1.08z" />
-              </svg>
-              <div>
-                <h4 className="text-white font-bold uppercase text-xs tracking-[0.2em]">
-                  WhatsApp
-                </h4>
-                <div className="w-10 h-px bg-red-600 mt-1 mb-2" />
-                <p className="text-zinc-400 group-hover:text-white transition-colors text-sm">
-                  +51 980 775 633
-                </p>
-                <span className="text-[10px] tracking-widest text-red-600 uppercase font-bold">
-                  Escríbenos →
-                </span>
+              <p className="text-zinc-200 max-w-sm leading-relaxed font-medium">
+                Únete a la familia Joe Palooka. Estamos listos para entrenar
+                contigo.
+              </p>
+
+              <div className="w-full max-w-sm h-px bg-zinc-700" />
+
+              <div className="space-y-6 w-full max-w-sm">
+                {/* UBICACIÓN FÍSICA */}
+                <div className="flex gap-4 items-start text-left">
+                  <svg
+                    className="w-5 h-5 text-red-600 shrink-0 mt-0.5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 21s-7-4.35-7-10a7 7 0 1114 0c0 5.65-7 10-7 10z"
+                    />
+                    <circle cx="12" cy="11" r="2.5" />
+                  </svg>
+                  <div>
+                    <h4 className="text-white font-bold uppercase text-xs tracking-[0.2em]">
+                      Ubicación
+                    </h4>
+                    <div className="w-10 h-px bg-red-600 mt-1 mb-2" />
+                    <p className="text-zinc-300 text-sm">
+                      Doña Elsa 157, Santiago de Surco
+                    </p>
+                  </div>
+                </div>
+
+                <div className="h-px bg-zinc-700" />
+
+                {/* CANAL WHATSAPP */}
+                <a
+                  href="https://wa.me/51980775633"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex gap-4 items-start group text-left transition-transform active:scale-95"
+                >
+                  <svg
+                    className="w-5 h-5 text-red-600 shrink-0 mt-0.5"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M12 2a10 10 0 00-8.66 15l-1.3 4.75L6.9 20.5A10 10 0 1012 2zm4.91 13.41c-.2.56-1.17 1.1-1.6 1.15-.41.05-.92.07-1.48-.11-.34-.11-.78-.25-1.35-.49-2.37-1.03-3.92-3.44-4.04-3.6-.12-.17-.96-1.27-.96-2.42 0-1.15.6-1.71.81-1.94.21-.23.46-.29.61-.29.15 0 .31.01.44.01.14 0 .32-.05.5.38.2.48.68 1.66.74 1.78.06.12.1.27.02.44-.07.17-.11.27-.22.41-.11.14-.23.31-.33.41-.11.11-.22.22-.09.43.13.21.59.98 1.27 1.59.87.78 1.61 1.02 1.84 1.13.23.11.36.09.49-.05.13-.14.56-.65.71-.87.15-.23.3-.19.5-.11.21.08 1.33.63 1.56.74.23.11.38.17.43.26.05.09.05.52-.15 1.08z" />
+                  </svg>
+                  <div>
+                    <h4 className="text-white font-bold uppercase text-xs tracking-[0.2em]">
+                      WhatsApp
+                    </h4>
+                    <div className="w-10 h-px bg-red-600 mt-1 mb-2" />
+                    <p className="text-zinc-300 group-hover:text-white transition-colors text-sm">
+                      +51 980 775 633
+                    </p>
+                    <span className="text-[10px] tracking-widest text-red-600 uppercase font-bold">
+                      Escríbenos →
+                    </span>
+                  </div>
+                </a>
+
+                <div className="h-px bg-zinc-700" />
+
+                {/* CANALES SOCIALES */}
+                <div className="flex gap-4 items-start text-left">
+                  <svg
+                    className="w-5 h-5 text-red-600 shrink-0 mt-0.5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <rect x="7" y="2" width="10" height="20" rx="2" />
+                    <circle cx="12" cy="18" r="1" />
+                  </svg>
+                  <div>
+                    <h4 className="text-white font-bold uppercase text-xs tracking-[0.2em]">
+                      Redes Sociales
+                    </h4>
+                    <div className="w-10 h-px bg-red-600 mt-1 mb-3" />
+                    <div className="flex gap-5">
+                      <a
+                        href="https://www.instagram.com/joe.palooka"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-zinc-300 hover:text-white uppercase text-[10px] font-black tracking-[0.25em] border-b border-zinc-800 pb-1 hover:border-red-600 transition-all"
+                      >
+                        Instagram
+                      </a>
+                      <a
+                        href="https://www.facebook.com/gimnasio.palooka"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-zinc-300 hover:text-white uppercase text-[10px] font-black tracking-[0.25em] border-b border-zinc-800 pb-1 hover:border-blue-600 transition-all"
+                      >
+                        Facebook
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </a>
+            </Reveal>
 
-            <div className="h-px bg-zinc-700" />
+            {/* MAPA DINÁMICO: Renderizado con filtros CSS para coherencia visual */}
+            <Reveal delay={300} className="w-full">
+              <div className="w-full h-[320px] md:h-[400px] rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-2xl">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d975.1300187262499!2d-77.00183773047863!3d-12.144954499256214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b81a3031e153%3A0xa752bdb1d6262cba!2sDo%C3%B1a%20Elsa%20157!5e0!3m2!1ses!2spe!4v1773623480483!5m2!1ses!2spe"
+                  className="w-full h-full md:grayscale md:invert md:opacity-80 md:contrast-125 md:brightness-90"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                />
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
 
-            {/* REDES */}
-            <div className="flex gap-4 items-start text-left">
-              <svg
-                className="w-5 h-5 text-red-600"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <rect x="7" y="2" width="10" height="20" rx="2" />
-                <circle cx="12" cy="18" r="1" />
-              </svg>
-              <div>
-                <h4 className="text-white font-bold uppercase text-xs tracking-[0.2em]">
-                  Redes Sociales
-                </h4>
-                <div className="w-10 h-px bg-red-600 mt-1 mb-3" />
+      {/* SECCIÓN 2: REFERENCIAS DE LOCALIZACIÓN */}
+      <section className="px-6 pb-16">
+        <Reveal delay={100}>
+          <div className="flex items-center justify-center gap-4 mb-6 mt-12">
+            <div className="h-px w-16 bg-red-800" />
+            <span className="text-[10px] tracking-[0.3em] text-red-500 uppercase font-medium">
+              donde buscarnos
+            </span>
+            <div className="h-px w-16 bg-red-800" />
+          </div>
+        </Reveal>
 
-                <div className="flex gap-5">
+        <Reveal delay={200}>
+          <h2 className="text-white text-center text-3xl font-bold uppercase mb-10">
+            encuentranos
+          </h2>
+        </Reveal>
+
+        <Reveal delay={300}>
+          <div className="w-full max-w-5xl mx-auto">
+            <div
+              className="relative w-full rounded-2xl overflow-hidden border border-zinc-800 shadow-2xl"
+              style={{
+                backgroundImage: "url('/img/1.jpeg')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
+              <div className="w-full h-full bg-black/85 px-6 py-12 md:py-20 flex flex-col items-center text-center">
+                <div className="max-w-lg">
+                  <h3 className="text-white text-xs uppercase tracking-[0.3em] font-black mb-4">
+                    ¿Dónde estamos?
+                  </h3>
+                  <p className="text-zinc-300 text-sm md:text-base leading-relaxed mb-8">
+                    Estamos en la{" "}
+                    <span className="text-white font-bold">
+                      Calle Doña Elsa 157, Surco
+                    </span>
+                    . A la espalda del{" "}
+                    <span className="text-white font-bold">
+                      Estadio Municipal Julio Montjoy Guizado
+                    </span>
+                    .
+                  </p>
+
+                  <h3 className="text-white text-xs uppercase tracking-[0.3em] font-black mb-4">
+                    Horarios de atención
+                  </h3>
+                  <p className="text-zinc-300 text-sm md:text-base leading-relaxed mb-10">
+                    De{" "}
+                    <span className="text-red-600 font-black">
+                      lunes a sábado
+                    </span>{" "}
+                    de{" "}
+                    <span className="text-white font-bold">
+                      7:00 AM a 8:00 PM
+                    </span>
+                    . Los domingos descansamos para volver con todo el lunes.
+                  </p>
+
                   <a
-                    href="https://www.instagram.com/joe.palooka?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-                    aria-label="Instagram"
+                    href="https://www.google.com/maps/search/?api=1&query=Calle+Doña+Elsa+157+Surco"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-zinc-400 hover:text-white uppercase text-[10px] font-black tracking-[0.25em] border-b border-zinc-800 pb-1 hover:border-red-600 transition-all"
+                    className="inline-block bg-white text-black px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all transform hover:scale-105 active:scale-95 shadow-xl"
                   >
-                    Instagram
-                  </a>
-
-                  <a
-                    href="https://www.facebook.com/gimnasio.palooka"
-                    aria-label="Facebook"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-zinc-400 hover:text-white uppercase text-[10px] font-black tracking-[0.25em] border-b border-zinc-800 pb-1 hover:border-blue-600 transition-all"
-                  >
-                    Facebook
+                    Abrir en Google Maps
                   </a>
                 </div>
               </div>
             </div>
           </div>
         </Reveal>
-
-        {/* MAPA */}
-        <Reveal delay={300} className="w-full">
-          <div className="w-full h-[320px] md:h-[400px] rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900 shadow-2xl">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d975.1300187262499!2d-77.00183773047863!3d-12.144954499256214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b81a3031e153%3A0xa752bdb1d6262cba!2sDo%C3%B1a%20Elsa%20157!5e0!3m2!1ses!2spe!4v1773623480483!5m2!1ses!2spe"
-              className="w-full h-full md:grayscale md:invert md:opacity-80 md:contrast-125 md:brightness-90"
-              style={{ border: 0 }}
-              loading="lazy"
-            />
-          </div>
-        </Reveal>
-      </div>
-
-      {/* SECCIÓN INFERIOR */}
-      <Reveal delay={100}>
-        <div className="flex items-center justify-center gap-4 mb-6 mt-12">
-          <div className="h-px w-16 bg-red-800" />
-          <span className="text-[10px] tracking-[0.3em] text-red-500 uppercase">
-            donde buscarnos
-          </span>
-          <div className="h-px w-16 bg-red-800" />
-        </div>
-      </Reveal>
-
-      <Reveal delay={200}>
-        <h2 className="text-white text-center text-3xl font-bold uppercase mb-10">
-          encuentranos
-        </h2>
-      </Reveal>
-
-      <Reveal delay={300}>
-        <section className="w-full max-w-5xl mx-auto">
-          <div
-            className="relative w-full rounded-2xl overflow-hidden border border-zinc-800 shadow-2xl"
-            style={{
-              backgroundImage: "url('/img/1.jpeg')",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
-            <div className="w-full h-full bg-black/85 px-6 py-12 md:py-20 flex flex-col items-center text-center">
-              <div className="max-w-lg">
-                <h3 className="text-white text-xs uppercase tracking-[0.3em] font-black mb-4">
-                  ¿Dónde estamos?
-                </h3>
-                <p className="text-zinc-300 text-sm md:text-base leading-relaxed mb-8">
-                  Estamos en la{" "}
-                  <span className="text-white font-bold">
-                    Calle Doña Elsa 157, Surco
-                  </span>
-                  . A la espalda del{" "}
-                  <span className="text-white font-bold">
-                    Estadio Municipal Julio Montjoy Guizado
-                  </span>
-                  .
-                </p>
-
-                <h3 className="text-white text-xs uppercase tracking-[0.3em] font-black mb-4">
-                  Horarios de atención
-                </h3>
-                <p className="text-zinc-300 text-sm md:text-base leading-relaxed mb-10">
-                  De{" "}
-                  <span className="text-red-600 font-black">
-                    lunes a sábado
-                  </span>{" "}
-                  de{" "}
-                  <span className="text-white font-bold">
-                    7:00 AM a 8:00 PM
-                  </span>
-                  . Los domingos descansamos para volver con todo el lunes.
-                </p>
-
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=Calle+Doña+Elsa+157+Surco"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block bg-white text-black px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all transform hover:scale-105 active:scale-95 shadow-xl"
-                >
-                  Abrir en Google Maps
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-      </Reveal>
+      </section>
     </main>
   );
 }
