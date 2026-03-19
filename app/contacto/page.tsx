@@ -4,17 +4,16 @@ import Reveal from "@/components/Reveal";
 import Link from "next/link";
 
 /**
- * ContactoPage - Gestión de canales de atención y ubicación.
- * Estilo industrial unificado con la marca Joe Palooka.
+ * ContactoPage - Gestión de canales de atención y ubicación estratégica.
+ * Diseño optimizado para conversión y legibilidad de marca.
  */
 export default function ContactoPage() {
-  // Dirección unificada para Google Maps
-  const googleMapsUrl =
-    "https://www.google.com/maps/search/?api=1&query=Calle+Doña+Elsa+157+Surco+Lima";
+  // Enlace directo a la ficha oficial de Google Maps
+  const googleMapsUrl = "https://maps.app.goo.gl/IS8MMBq4BZERrgybfrXfXiY";
 
   return (
     <main className="min-h-screen bg-zinc-950 selection:bg-red-600/30 px-6 pt-10 p-6 relative overflow-hidden font-[family-name:var(--font-inter)]">
-      {/* CAPA ORNAMENTAL: Fondo Hero con efecto espejo y gradiente */}
+      {/* CAPA ORNAMENTAL: Efecto visual de marca en segundo plano */}
       <div
         className="absolute inset-0 z-0 opacity-30 grayscale pointer-events-none"
         style={{
@@ -27,44 +26,41 @@ export default function ContactoPage() {
       />
       <div className="absolute inset-0 z-0 bg-gradient-to-t from-zinc-950 via-zinc-950/70 to-transparent pointer-events-none" />
 
-      {/* BLOQUE DE TÍTULO */}
+      {/* BLOQUE DE TÍTULO PRINCIPAL */}
       <Reveal delay={100}>
         <h1 className="relative z-10 text-center text-[15vw] md:text-6xl font-[family-name:var(--font-archivo)] uppercase mb-3 md:mb-6 leading-tight tracking-tighter text-white">
           contacto
         </h1>
       </Reveal>
 
-      {/* SUBTÍTULO INFORMATIVO */}
       <Reveal delay={200}>
-        <p className="relative z-10 text-[10px] md:text-xs font-bold tracking-[0.2em] text-zinc-300 max-w-[90vw] md:max-w-none leading-relaxed text-center mx-auto mb-6 md:mb-12 uppercase">
-          <span className="inline-block md:whitespace-nowrap">
-            Únete a la familia Palooka
-          </span>
+        <p className="relative z-10 text-[10px] md:text-xs font-bold tracking-[0.2em] text-zinc-300 leading-relaxed text-center mx-auto mb-6 md:mb-12 uppercase">
+          <span className="inline-block">Únete a la familia Palooka</span>
         </p>
       </Reveal>
 
-      {/* TARJETA PRINCIPAL DE CONTACTO */}
+      {/* TARJETA DE INFORMACIÓN CENTRALIZADA */}
       <Reveal delay={200}>
         <div className="relative z-10 max-w-5xl mx-auto overflow-hidden rounded-[2.5rem] border border-zinc-800 bg-zinc-900/50 shadow-2xl flex flex-col md:flex-row">
-          {/* LADO IZQUIERDO: Fotografía de marca con badge de ubicación */}
+          {/* LADO IZQUIERDO: Identidad Visual */}
           <div
             className="relative min-h-[250px] md:min-h-[450px] md:w-1/2 bg-cover bg-center grayscale hover:grayscale-0 transition-all duration-700"
             style={{ backgroundImage: "url('/img/1.jpeg')" }}
           >
             <div className="absolute top-6 left-6 bg-black/60 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full z-10">
-              <p className="text-[9px] text-white uppercase font-bold tracking-[0.2em] flex items-center gap-2">
+              <p className="text-[9px] text-white uppercase font-bold tracking-[0.2em]">
                 Surco, Lima
               </p>
             </div>
             <div className="absolute inset-0 bg-gradient-to-r from-zinc-950/20 to-zinc-950/60 md:to-transparent" />
           </div>
 
-          {/* LADO DERECHO: Panel de información y accesos directos */}
+          {/* LADO DERECHO: Canales de Atención */}
           <div className="md:w-1/2 p-8 md:p-12 flex flex-col justify-center relative bg-zinc-950">
             <div className="relative z-10 space-y-10">
-              {/* SECCIÓN: DIRECCIÓN (Clickeable a Google Maps) */}
+              {/* UBICACIÓN GEOGRÁFICA */}
               <a
-                href={googleMapsUrl}
+                href="https://www.google.com/maps/place/Gym+de+boxeo+Joe+Palooka/@-12.1450618,-77.002061,18.5z/data=!4m16!1m9!3m8!1s0x9105b81a300c2f21:0x265edfb57e9b0cae!2sGym+de+boxeo+Joe+Palooka!8m2!3d-12.1449301!4d-77.0011506!9m1!1b1!16s%2Fg%2F11gyxfvmh_!3m5!1s0x9105b81a300c2f21:0x265edfb57e9b0cae!8m2!3d-12.1449301!4d-77.0011506!16s%2Fg%2F11gyxfvmh_?entry=ttu&g_ep=EgoyMDI2MDMxNS4wIKXMDSoASAFQAw%3D%3D"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex gap-5 items-start group cursor-pointer"
@@ -102,7 +98,7 @@ export default function ContactoPage() {
                 </div>
               </a>
 
-              {/* SECCIÓN: HORARIOS */}
+              {/* HORARIOS DE OPERACIÓN */}
               <div className="flex gap-5 items-start">
                 <div className="mt-1 bg-red-600/10 p-3 rounded-2xl border border-red-600/20">
                   <svg
@@ -138,16 +134,15 @@ export default function ContactoPage() {
                 </div>
               </div>
 
-              {/* SECCIÓN: CANALES DIGITALES */}
+              {/* CONTACTO DIGITAL */}
               <div className="space-y-4">
-                {/* Enlace WhatsApp */}
                 <a
                   href="https://wa.me/51980775633"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex gap-4 items-center p-5 bg-zinc-900/50 hover:bg-zinc-800 border border-zinc-800 rounded-3xl transition-all duration-300 active:scale-[0.98]"
                 >
-                  <div className="bg-zinc-800 group-hover:bg-green-600/10 p-3 rounded-2xl transition-colors">
+                  <div className="bg-zinc-800 p-2 rounded-xl">
                     <svg
                       className="w-6 h-6 text-green-500"
                       viewBox="0 0 24 24"
@@ -156,16 +151,15 @@ export default function ContactoPage() {
                       <path d="M12 2a10 10 0 00-8.66 15l-1.3 4.75L6.9 20.5A10 10 0 1012 2zm4.91 13.41c-.2.56-1.17 1.1-1.6 1.15-.41.05-.92.07-1.48-.11-.34-.11-.78-.25-1.35-.49-2.37-1.03-3.92-3.44-4.04-3.6-.12-.17-.96-1.27-.96-2.42 0-1.15.6-1.71.81-1.94.21-.23.46-.29.61-.29.15 0 .31.01.44.01.14 0 .32-.05.5.38.2.48.68 1.66.74 1.78.06.12.1.27.02.44-.07.17-.11.27-.22.41-.11.14-.23.31-.33.41-.11.11-.22.22-.09.43.13.21.59.98 1.27 1.59.87.78 1.61 1.02 1.84 1.13.23.11.36.09.49-.05.13-.14.56-.65.71-.87.15-.23.3-.19.5-.11.21.08 1.33.63 1.56.74.23.11.38.17.43.26.05.09.05.52-.15 1.08z" />
                     </svg>
                   </div>
-                  <p className="text-zinc-200 font-bold uppercase text-sm">
+                  <p className="text-zinc-200 font-bold uppercase text-xs tracking-widest">
                     WhatsApp Directo
                   </p>
                 </a>
 
-                {/* Contenedor de Redes Sociales */}
                 <div className="flex gap-4 items-center p-5 bg-zinc-900/50 border border-zinc-800 rounded-3xl">
                   <div className="bg-zinc-800 p-3 rounded-2xl">
                     <svg
-                      className="w-6 h-6 text-red-600"
+                      className="w-5 h-5 text-red-600"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -176,7 +170,7 @@ export default function ContactoPage() {
                     </svg>
                   </div>
                   <div className="flex flex-col">
-                    <h4 className="text-white font-bold uppercase text-[10px] tracking-[0.2em] mb-2">
+                    <h4 className="text-white font-bold uppercase text-[9px] tracking-[0.2em] mb-1">
                       Redes Sociales
                     </h4>
                     <div className="flex gap-4">
@@ -184,7 +178,7 @@ export default function ContactoPage() {
                         href="https://www.instagram.com/joe.palooka"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-zinc-400 hover:text-white text-[11px] font-bold tracking-widest uppercase transition-colors"
+                        className="text-zinc-400 hover:text-white text-[10px] font-bold tracking-widest uppercase transition-colors"
                       >
                         Instagram
                       </a>
@@ -192,7 +186,7 @@ export default function ContactoPage() {
                         href="https://www.facebook.com/gimnasio.palooka"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-zinc-400 hover:text-white text-[11px] font-bold tracking-widest uppercase transition-colors"
+                        className="text-zinc-400 hover:text-white text-[10px] font-bold tracking-widest uppercase transition-colors"
                       >
                         Facebook
                       </a>
@@ -201,28 +195,15 @@ export default function ContactoPage() {
                 </div>
               </div>
 
-              {/* ACCESO FINAL: Google Maps Button */}
+              {/* ACCESO A GOOGLE MAPS */}
               <div className="pt-4">
                 <a
-                  href={googleMapsUrl}
+                  href="https://www.google.com/maps/place/Gym+de+boxeo+Joe+Palooka/@-12.1450618,-77.002061,18.5z/data=!4m16!1m9!3m8!1s0x9105b81a300c2f21:0x265edfb57e9b0cae!2sGym+de+boxeo+Joe+Palooka!8m2!3d-12.1449301!4d-77.0011506!9m1!1b1!16s%2Fg%2F11gyxfvmh_!3m5!1s0x9105b81a300c2f21:0x265edfb57e9b0cae!8m2!3d-12.1449301!4d-77.0011506!16s%2Fg%2F11gyxfvmh_?entry=ttu&g_ep=EgoyMDI2MDMxNS4wIKXMDSoASAFQAw%3D%3D"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-3 w-full md:w-auto bg-white text-black px-10 py-4 rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all duration-500 shadow-2xl active:scale-95"
+                  className="inline-flex items-center justify-center gap-3 w-full md:w-auto bg-white text-black px-10 py-4 rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all duration-500 shadow-2xl"
                 >
                   Ver en Google Maps
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth="3"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
                 </a>
               </div>
             </div>
@@ -230,33 +211,27 @@ export default function ContactoPage() {
         </div>
       </Reveal>
 
-      {/* SECCIÓN FINAL DE CIERRE Y CTA */}
+      {/* FOOTER CTA */}
       <Reveal delay={150}>
         <div className="relative z-10 text-center mt-12 mb-20 px-6">
           <div className="h-px w-12 bg-red-600 mx-auto mb-8 opacity-50" />
-
           <h2 className="text-white text-3xl md:text-5xl font-[family-name:var(--font-archivo)] uppercase tracking-tighter mb-4">
-            ¿Listo para <br className="md:hidden" /> el primer{" "}
-            <span className="text-red-600">round?</span>
+            ¿Listo para el primer <span className="text-red-600">round?</span>
           </h2>
-
-          <p className="text-zinc-500 text-[10px] md:text-xs uppercase tracking-[0.3em] mb-10 max-w-xs mx-auto leading-relaxed">
+          <p className="text-zinc-500 text-[10px] uppercase tracking-[0.3em] mb-10 max-w-xs mx-auto">
             Consulta por nuestra{" "}
-            <span className="text-white">primera clase de cortesía</span> y
-            empieza hoy mismo.
+            <span className="text-white">clase de cortesía</span>.
           </p>
-
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/precios"
-              className="w-full sm:w-auto px-10 py-4 bg-white text-black font-black uppercase text-[10px] tracking-[0.2em] rounded-2xl hover:bg-red-600 hover:text-white transition-all duration-300 active:scale-95"
+              className="w-full sm:w-auto px-10 py-4 bg-white text-black font-black uppercase text-[10px] tracking-[0.2em] rounded-2xl hover:bg-red-600 hover:text-white transition-all duration-300"
             >
               Ver Membresías
             </Link>
-
             <Link
               href="/horarios"
-              className="w-full sm:w-auto px-10 py-4 border border-white/10 text-white font-black uppercase text-[10px] tracking-[0.2em] rounded-2xl hover:bg-white/5 transition-all active:scale-95"
+              className="w-full sm:w-auto px-10 py-4 border border-white/10 text-white font-black uppercase text-[10px] tracking-[0.2em] rounded-2xl hover:bg-white/5 transition-all"
             >
               Revisar Horarios
             </Link>

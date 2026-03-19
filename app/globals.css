@@ -1,43 +1,52 @@
 @import "tailwindcss";
 
+/* 1. VARIABLES DE DISEÑO */
 :root {
   --font-inter: "Inter", sans-serif;
   --font-archivo: "Archivo Black", sans-serif;
-}
-
-/* 1. Definimos los colores base para que no haya conflictos */
-:root {
-  --background: #09090b; /* Sincronizado con tu bg-3d-grid */
+  --background: #09090b;
   --foreground: #f4f4f5;
 }
 
-/* 2. Reset básico del body */
+/* 2. ESTILOS BASE */
 body {
   background-color: var(--background);
   color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* 3. UTILIDADES Y COMPONENTES */
 @layer utilities {
+  /* Rejilla estructural fija */
   .bg-3d-grid {
-    background-color: #09090b;
     position: relative;
+    background-color: #09090b;
     overflow-x: hidden;
   }
 
-  /* Capa de Rejilla (Separada para que no se mueva) */
   .bg-3d-grid::before {
     content: "";
     position: fixed;
     inset: 0;
-    z-index: -2; /* Al fondo de todo */
+    z-index: -2;
     background-image:
       linear-gradient(to right, #1a1a1e 1px, transparent 1px),
       linear-gradient(to bottom, #1a1a1e 1px, transparent 1px);
     background-size: 80px 80px;
     background-attachment: fixed;
-    opacity: 0;
+    pointer-events: none;
   }
 
+  /* Variante de rejilla para fondos claros */
+  .bg-3d-grid-light {
+    background-image:
+      linear-gradient(to right, #e4e4e7 1px, transparent 1px),
+      linear-gradient(to bottom, #e4e4e7 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+
+  /* 4. ANIMACIONES */
   @keyframes scroll-line {
     0% {
       transform: translateY(-100%);
@@ -51,11 +60,8 @@ body {
       opacity: 0;
     }
   }
+
   .animate-scroll-line {
     animation: scroll-line 2.5s infinite cubic-bezier(0.65, 0, 0.35, 1);
-  }
-
-  .group:hover img {
-    filter: grayscale(0%);
   }
 }

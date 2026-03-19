@@ -4,10 +4,11 @@ import Link from "next/link";
 import Reveal from "@/components/Reveal";
 
 /**
- * Componente Home: Landing Page unificada.
- * Optimizaciones: Aceleración por GPU, Lazy Loading, Reducción de Jank en animaciones.
+ * Componente Home: Landing Page principal.
+ * Estructura de secciones de alto impacto con optimización de renderizado.
  */
 export default function Home() {
+  // Configuración del staff técnico
   const profesores = [
     {
       nombre: "Victor Paredes",
@@ -28,7 +29,7 @@ export default function Home() {
 
   return (
     <main className="bg-zinc-950 min-h-screen selection:bg-red-600/30 font-[family-name:var(--font-inter)]">
-      {/* 1. SECCIÓN HERO (Optimización de fondo y scroll indicator) */}
+      {/* 1. SECCIÓN HERO: Identidad visual y llamado a la acción principal */}
       <section className="relative flex items-center justify-center w-full h-[92vh] min-h-[600px] overflow-hidden">
         <div
           className="absolute inset-0 z-0 opacity-40 grayscale transform-gpu"
@@ -87,7 +88,7 @@ export default function Home() {
           </Reveal>
         </div>
 
-        {/* INDICADOR DE SCROLL (Visible solo en desktop para reducir carga en móvil) */}
+        {/* Indicador de scroll asistido por animación CSS externa */}
         <div className="absolute bottom-10 left-10 z-30 flex items-center gap-3 opacity-30 select-none pointer-events-none hidden md:flex">
           <div className="h-12 w-[1px] bg-zinc-800 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-red-600 to-transparent animate-scroll-line" />
@@ -98,7 +99,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. SECCIÓN: SOBRE EL GYM (Estilo blanco) */}
+      {/* 2. SECCIÓN: PROPUESTA DE VALOR (Fondo blanco) */}
       <section className="bg-white py-24 md:py-32 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
@@ -149,7 +150,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. SECCIÓN: METODOLOGÍA (Fondo rojo) */}
+      {/* 3. SECCIÓN: METODOLOGÍA (Identidad de marca) */}
       <section className="relative py-24 md:py-40 px-6 bg-red-600 overflow-hidden">
         <div
           className="absolute inset-0 z-0 opacity-20 grayscale mix-blend-multiply pointer-events-none transform-gpu"
@@ -159,11 +160,9 @@ export default function Home() {
             backgroundPosition: "center",
           }}
         />
-
         <span className="absolute top-0 right-[-5%] text-white/[0.08] font-black text-[30vw] uppercase leading-none pointer-events-none select-none font-[family-name:var(--font-archivo)]">
           MÉTODO
         </span>
-
         <div className="max-w-6xl mx-auto relative z-10">
           <Reveal>
             <span className="text-black font-black uppercase text-[10px] tracking-[0.5em] mb-6 block">
@@ -176,7 +175,6 @@ export default function Home() {
               <span className="text-black">Selección Peruana</span>
             </h2>
           </Reveal>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
               {
@@ -207,17 +205,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. SECCIÓN: STAFF (Optimización de carga de imágenes) */}
+      {/* 4. SECCIÓN: STAFF TÉCNICO */}
       <section className="py-24 md:py-32 px-6 bg-zinc-950 relative overflow-hidden">
         <div className="absolute -top-20 -right-20 md:-top-32 md:-right-32 z-0 opacity-[0.05] pointer-events-none select-none">
           <img
             src="/img/icono.png"
-            alt="Icon"
+            alt="Branding"
             className="w-[60vw] md:w-[35vw] grayscale invert transform-gpu"
             loading="lazy"
           />
         </div>
-
         <div className="max-w-7xl mx-auto relative z-10">
           <Reveal>
             <h2 className="text-white text-5xl md:text-8xl font-[family-name:var(--font-archivo)] uppercase leading-none tracking-tighter mb-16">
@@ -228,7 +225,6 @@ export default function Home() {
             {profesores.map((pro, index) => (
               <Reveal key={index} delay={index * 150}>
                 <div className="group relative aspect-[4/5] md:aspect-[3/4] overflow-hidden bg-zinc-900 border border-zinc-800 transition-all duration-500 hover:border-red-600/40 transform-gpu">
-                  {/* Uso de img con object-cover y decoding async para fluidez */}
                   <img
                     src={pro.img}
                     alt={pro.nombre}
@@ -258,13 +254,13 @@ export default function Home() {
         </Reveal>
       </div>
 
-      {/* 5. SECCIÓN: INFRAESTRUCTURA (Fondo negro) */}
+      {/* 5. SECCIÓN: INFRAESTRUCTURA */}
       <section className="py-24 md:py-32 px-6 bg-zinc-950 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
             <div className="lg:col-span-5 space-y-8 order-2 lg:order-1 relative z-10">
               <Reveal>
-                <h2 className="text-white font-[family-name:var(--font-archivo)] uppercase tracking-[-0.02em] md:tracking-tighter">
+                <h2 className="text-white font-[family-name:var(--font-archivo)] uppercase">
                   <span className="block sm:hidden text-[30px] leading-[1.05]">
                     Infraestructura de{" "}
                     <span className="text-red-600">Nivel</span>
@@ -285,15 +281,9 @@ export default function Home() {
                     <span className="text-white font-bold">
                       ring con medidas oficiales
                     </span>
-                    . Nuestro espacio está diseñado para el desplazamiento real
-                    de una pelea profesional.
+                    . Nuestro espacio está diseñado para el desplazamiento real.
                   </p>
                 </div>
-              </Reveal>
-              <Reveal delay={300}>
-                <p className="text-zinc-500 text-[10px] md:text-xs uppercase tracking-[0.25em] font-bold">
-                  Sacos de 100lb • Peras de velocidad • Área de sombra
-                </p>
               </Reveal>
             </div>
 
@@ -305,40 +295,107 @@ export default function Home() {
                     loading="lazy"
                     decoding="async"
                     className="absolute inset-0 w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-700"
-                    alt="Ring"
+                    /* SEO: Descripción específica de la infraestructura principal */
+                    alt="Ring de boxeo profesional con medidas oficiales en Joe Palooka Surco"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/60 to-transparent" />
-                  <span className="absolute bottom-4 md:bottom-6 left-4 md:left-6 text-white text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] opacity-70">
-                    Medidas Oficiales
-                  </span>
                 </div>
               </Reveal>
-              <Reveal delay={200}>
-                <div className="aspect-square overflow-hidden rounded-2xl group border border-zinc-800 transform-gpu">
-                  <img
-                    src="/img/r1.jpeg"
-                    loading="lazy"
-                    className="w-full h-full object-cover grayscale group-hover:scale-110 transition-transform duration-700"
-                    alt="Gym"
-                  />
-                </div>
-              </Reveal>
-              <Reveal delay={400}>
-                <div className="aspect-square overflow-hidden rounded-2xl group border border-zinc-800 transform-gpu">
-                  <img
-                    src="/img/r3.jpeg"
-                    loading="lazy"
-                    className="w-full h-full object-cover grayscale group-hover:scale-110 transition-transform duration-700"
-                    alt="Gym"
-                  />
-                </div>
-              </Reveal>
+
+              {/* Mapeo de imágenes secundarias con ALTs dinámicos para SEO */}
+              {[1, 3].map((num, i) => (
+                <Reveal key={num} delay={(i + 1) * 200}>
+                  <div className="aspect-square overflow-hidden rounded-2xl group border border-zinc-800 transform-gpu">
+                    <img
+                      src={`/img/r${num}.jpeg`}
+                      loading="lazy"
+                      className="w-full h-full object-cover grayscale group-hover:scale-110 transition-transform duration-700"
+                      /* SEO: Variación de palabras clave para instalaciones */
+                      alt={
+                        num === 1
+                          ? "Área de sacos y entrenamiento funcional en gimnasio de boxeo Surco"
+                          : "Instalaciones de alto rendimiento Joe Palooka Santiago de Surco"
+                      }
+                    />
+                  </div>
+                </Reveal>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* 6. FAQ */}
+      {/* 6. SECCIÓN: SERVICIOS ADICIONALES (Alquiler) */}
+      <section className="py-20 px-6 bg-white text-zinc-950">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {[
+              {
+                t: "Alquiler de Gimnasio",
+                d: "Espacio para producciones o eventos privados.",
+                icon: "M18 20V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16",
+                msg: "alquiler%20del%20gimnasio%20para%20un%20evento",
+              },
+              {
+                t: "Alquiler de Ring",
+                d: "Uso profesional previo acuerdo.",
+                msg: "alquiler%20del%20ring%20profesional",
+              },
+            ].map((item, i) => (
+              <Reveal
+                key={i}
+                delay={i * 200}
+                className="flex flex-col items-center text-center space-y-4"
+              >
+                <div className="p-4 bg-zinc-100 rounded-full">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#dc2626"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    {item.icon ? (
+                      <>
+                        <path d={item.icon} />
+                        <rect width="20" height="8" x="2" y="14" rx="2" />
+                        <path d="M6 14v6" />
+                        <path d="M18 14v6" />
+                      </>
+                    ) : (
+                      <>
+                        <rect width="18" height="18" x="3" y="3" rx="2" />
+                        <path d="M3 9h18" />
+                        <path d="M3 15h18" />
+                        <path d="M9 3v18" />
+                        <path d="M15 3v18" />
+                      </>
+                    )}
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-[family-name:var(--font-archivo)] uppercase tracking-tighter">
+                  {item.t}
+                </h3>
+                <p className="text-zinc-600 text-sm max-w-xs">{item.d}</p>
+                <a
+                  href={`https://wa.me/51980775633?text=Hola,%20quisiera%20información%20sobre%20el%20${item.msg}.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 px-6 py-2 border-2 border-black text-black font-bold text-[10px] uppercase tracking-widest hover:bg-black hover:text-white transition-all"
+                >
+                  Consultar
+                </a>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 7. FAQ: Resolución de dudas frecuentes */}
       <section className="bg-zinc-900/50 py-24 px-6 border-y border-zinc-900">
         <div className="max-w-3xl mx-auto text-center">
           <Reveal>
@@ -358,7 +415,7 @@ export default function Home() {
               },
               {
                 q: "¿Cuentan con espacio para cambiarse?",
-                a: "Sí, disponemos de camerinos equipados para tu comodidad.",
+                a: "Sí, disponemos de camerinos equipados.",
               },
               {
                 q: "¿Hay clases de prueba?",
@@ -385,11 +442,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* CIERRE Y FOOTER VISUAL */}
       <section className="py-32 px-6 text-center bg-zinc-950 relative overflow-hidden">
         <Reveal>
           <h2 className="text-white text-[12vw] md:text-8xl font-[family-name:var(--font-archivo)] uppercase leading-none tracking-tighter mb-10">
-            ¿Listo para <br /> el primer{" "}
-            <span className="text-red-600">round?</span>
+            ¿Listo para el primer <span className="text-red-600">round?</span>
           </h2>
           <Link
             href="/precios"
@@ -401,29 +458,10 @@ export default function Home() {
       </section>
 
       <footer className="py-10 bg-zinc-950 opacity-20 pointer-events-none flex items-center justify-center overflow-hidden">
-        <span className="text-zinc-600 font-black text-[18vw] leading-none uppercase font-[family-name:var(--font-archivo)] text-center block w-full">
+        <span className="text-zinc-600 font-black text-[18vw] leading-none uppercase font-[family-name:var(--font-archivo)]">
           Palooka
         </span>
       </footer>
-
-      <style jsx global>{`
-        @keyframes scroll-line {
-          0% {
-            transform: translateY(-100%);
-            opacity: 0;
-          }
-          50% {
-            opacity: 1;
-          }
-          100% {
-            transform: translateY(100%);
-            opacity: 0;
-          }
-        }
-        .animate-scroll-line {
-          animation: scroll-line 2.5s infinite cubic-bezier(0.65, 0, 0.35, 1);
-        }
-      `}</style>
     </main>
   );
 }
