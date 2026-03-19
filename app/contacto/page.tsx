@@ -1,6 +1,7 @@
 "use client";
 
 import Reveal from "@/components/Reveal";
+import Link from "next/link";
 
 /**
  * ContactoPage - Gestión de canales de atención y ubicación.
@@ -60,11 +61,6 @@ export default function ContactoPage() {
 
           {/* LADO DERECHO: Panel de información y accesos directos */}
           <div className="md:w-1/2 p-8 md:p-12 flex flex-col justify-center relative bg-zinc-950">
-            {/* Identificador de marca de agua */}
-            <span className="absolute -right-4 -bottom-4 text-7xl font-black text-white/[0.02] select-none pointer-events-none font-[family-name:var(--font-archivo)]">
-              PALOOKA
-            </span>
-
             <div className="relative z-10 space-y-10">
               {/* SECCIÓN: DIRECCIÓN (Clickeable a Google Maps) */}
               <a
@@ -230,6 +226,40 @@ export default function ContactoPage() {
                 </a>
               </div>
             </div>
+          </div>
+        </div>
+      </Reveal>
+
+      {/* SECCIÓN FINAL DE CIERRE Y CTA */}
+      <Reveal delay={150}>
+        <div className="relative z-10 text-center mt-12 mb-20 px-6">
+          <div className="h-px w-12 bg-red-600 mx-auto mb-8 opacity-50" />
+
+          <h2 className="text-white text-3xl md:text-5xl font-[family-name:var(--font-archivo)] uppercase tracking-tighter mb-4">
+            ¿Listo para <br className="md:hidden" /> el primer{" "}
+            <span className="text-red-600">round?</span>
+          </h2>
+
+          <p className="text-zinc-500 text-[10px] md:text-xs uppercase tracking-[0.3em] mb-10 max-w-xs mx-auto leading-relaxed">
+            Consulta por nuestra{" "}
+            <span className="text-white">primera clase de cortesía</span> y
+            empieza hoy mismo.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/precios"
+              className="w-full sm:w-auto px-10 py-4 bg-white text-black font-black uppercase text-[10px] tracking-[0.2em] rounded-2xl hover:bg-red-600 hover:text-white transition-all duration-300 active:scale-95"
+            >
+              Ver Membresías
+            </Link>
+
+            <Link
+              href="/horarios"
+              className="w-full sm:w-auto px-10 py-4 border border-white/10 text-white font-black uppercase text-[10px] tracking-[0.2em] rounded-2xl hover:bg-white/5 transition-all active:scale-95"
+            >
+              Revisar Horarios
+            </Link>
           </div>
         </div>
       </Reveal>
