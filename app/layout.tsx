@@ -26,6 +26,26 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className="scroll-smooth">
+      <head>
+        {/* Color de la barra de estado del navegador en móvil - Siempre hueso */}
+        <meta name="theme-color" content="#f2f2f0" />
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        {/* Para navegadores que soportan prefers-color-scheme */}
+        <meta
+          name="theme-color"
+          content="#f2f2f0"
+          media="(prefers-color-scheme: light)"
+        />
+        <meta
+          name="theme-color"
+          content="#f2f2f0"
+          media="(prefers-color-scheme: dark)"
+        />
+      </head>
       <body
         className={`${inter.variable} ${archivoBlack.variable} antialiased flex flex-col min-h-screen bg-3d-grid text-zinc-50 font-sans`}
       >
