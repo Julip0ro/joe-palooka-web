@@ -4,15 +4,25 @@ import { useEffect, useRef } from "react";
 
 /**
  * Sección que contiene una imagen a pantalla completa con efecto de zoom out.
- * Al hacer scroll, la imagen se aleja progresivamente creando una sensación
- * de profundidad y expansión visual. La imagen se presenta en escala de grises
- * para mantener coherencia con la estética del sitio.
+ * En desktop, al hacer scroll, la imagen se aleja progresivamente.
+ * En móvil, la imagen es completamente estática.
  */
 export default function ZoomOutSection() {
   const containerRef = useRef<HTMLElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Detectar si es móvil (pantalla menor a 768px)
+    const isMobile = window.innerWidth < 768;
+
+    if (isMobile) {
+      // En móvil, no aplicar efecto, mantener imagen estática
+      if (imageRef.current) {
+        imageRef.current.style.transform = "scale(1)";
+      }
+      return;
+    }
+
     const handleScroll = () => {
       if (!containerRef.current || !imageRef.current) return;
 
@@ -26,9 +36,6 @@ export default function ZoomOutSection() {
       const visibleRatio = visibleHeight / windowHeight;
 
       // El zoom out se intensifica a medida que la sección entra al viewport
-      // Escala inicial: 1.15 (ligeramente acercada)
-      // Escala final: 1 (tamaño normal)
-      // El rango se controla entre 0 y 0.8 de visibilidad
       const progress = Math.min(1, Math.max(0, visibleRatio * 1.25));
       const scale = 1.15 - progress * 0.15;
 

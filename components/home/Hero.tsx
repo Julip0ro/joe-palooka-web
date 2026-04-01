@@ -19,9 +19,9 @@ export default function Hero() {
 
   return (
     <section className="relative w-full h-[100svh] overflow-hidden bg-[#121212] font-[family-name:var(--font-inter)]">
-      {/* Imagen de fondo con zoom lento */}
+      {/* Imagen de fondo - estática en móvil, con zoom en desktop */}
       <div className="absolute inset-0 z-0 opacity-40 grayscale overflow-hidden pointer-events-none">
-        <div className="relative w-full h-full transform-gpu animate-slow-zoom">
+        <div className="relative w-full h-full md:transform-gpu md:animate-slow-zoom">
           <Image
             src="/img/mrc1.webp"
             alt="Joe Palooka Boxing Club"
@@ -74,7 +74,6 @@ export default function Hero() {
           delay={800}
           className="flex flex-col sm:flex-row gap-4 sm:gap-5 w-full sm:w-auto"
         >
-          {/* Botón con efecto glassmorphism */}
           <Link
             href="/precios"
             className="px-8 sm:px-10 py-4 sm:py-5 bg-red-600/80 backdrop-blur-sm border border-red-400/30 text-white hover:bg-red-600 hover:border-red-600 hover:backdrop-blur-none font-bold uppercase text-[10px] sm:text-[11px] tracking-[0.2em] transition-all duration-500 text-center rounded-sm shadow-xl active:scale-95"
