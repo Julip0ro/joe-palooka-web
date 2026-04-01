@@ -27,8 +27,8 @@ export const cronograma: Dia[] = [
     clases: [
       { horario: "7:00 AM", profesor: "Alan P." },
       { horario: "12:00 PM", profesor: "Alan P." },
-      { horario: "6:30 PM", profesor: "Sin asignar" },
-      { horario: "8:00 PM", profesor: "Sin asignar" },
+      { horario: "6:30 PM", profesor: "Alan P." },
+      { horario: "8:00 PM", profesor: "Luis P." },
     ],
   },
   {
@@ -47,8 +47,8 @@ export const cronograma: Dia[] = [
     clases: [
       { horario: "7:00 AM", profesor: "Alan P." },
       { horario: "12:00 PM", profesor: "Alan P." },
-      { horario: "6:30 PM", profesor: "Sin asignar" },
-      { horario: "8:00 PM", profesor: "Sin asignar" },
+      { horario: "6:30 PM", profesor: "Alan P." },
+      { horario: "8:00 PM", profesor: "Luis P." },
     ],
   },
   {
