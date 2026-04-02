@@ -3,6 +3,13 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["500", "600", "700", "800"],
+  variable: "--font-poppins",
+});
 
 const NAV_LINKS = [
   { href: "/", label: "Inicio" },
@@ -59,58 +66,73 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Cerrar menú al redimensionar a desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768 && menuAbierto) {
+        setMenuAbierto(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [menuAbierto]);
+
+  // Bloquear scroll del body cuando el menú está abierto en móvil
+  useEffect(() => {
+    if (menuAbierto) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuAbierto]);
+
   const handleToggle = () => setMenuAbierto(!menuAbierto);
   const handleClose = () => setMenuAbierto(false);
 
-  // Colores dinámicos - mejor contraste sin cambiar colores
-  const textColor = isLight ? "text-black" : "text-white";
-  const textColorMuted = isLight ? "text-zinc-600" : "text-zinc-300";
-  const lineColor = isLight ? "bg-black" : "bg-white";
-  const iconColor = isLight ? "bg-black" : "bg-white";
+  const textColor = "text-white";
+  const lineColor = "bg-white";
+  const iconColor = "bg-white";
 
-  // Lógica de fondo
   const getNavBackground = () => {
     if (menuAbierto) {
-      return isLight ? "bg-[#f2f2f0]" : "bg-black";
+      return "bg-transparent";
     }
     if (isScrolled) {
-      return isLight
-        ? "bg-white/70 backdrop-blur-xl"
-        : "bg-black/40 backdrop-blur-xl";
+      return "bg-black/10 backdrop-blur-sm";
     }
-    return isLight ? "bg-[#f2f2f0]" : "bg-transparent";
+    return "bg-transparent";
   };
 
   return (
     <header
-      className={`fixed top-0 z-[100] w-full transition-all duration-500 ${getNavBackground()}`}
+      className={`fixed top-0 z-[100] w-full transition-all duration-500 ${getNavBackground()} ${poppins.variable} font-[family-name:var(--font-poppins)]`}
     >
-      {/* DESKTOP NAV */}
-      <nav className="hidden md:flex h-16 px-6">
+      {/* DESKTOP NAV (md en adelante: 768px) */}
+      <nav className="hidden md:flex h-16 lg:h-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex justify-between items-center w-full">
-          <Link href="/" className="flex items-center gap-3 group">
+          <Link href="/" className="flex items-center gap-2 lg:gap-3 group">
             <img
               src="/img/icono.png"
-              className="w-8 h-8 transition-transform duration-300 group-hover:scale-110"
+              className="w-7 h-7 lg:w-8 lg:h-8 transition-transform duration-300 group-hover:scale-110"
               alt="Logo"
             />
             <span
-              className={`${textColor} text-xl font-bold uppercase transition-colors duration-700`}
+              className={`${textColor} text-lg lg:text-xl font-semibold uppercase tracking-wide transition-colors duration-700`}
             >
               Joe Palooka
             </span>
           </Link>
 
-          <div className="flex gap-8 items-center">
+          <div className="flex gap-6 lg:gap-8 items-center">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative text-[13px] font-medium uppercase tracking-[0.2em] transition-colors duration-500 group ${
-                  pathname === link.href
-                    ? textColor
-                    : `${textColorMuted} hover:${textColor}`
-                }`}
+                className={`relative text-[12px] lg:text-[14px] font-medium uppercase tracking-[0.15em] transition-colors duration-500 group ${textColor}`}
               >
                 {link.label}
                 <span
@@ -122,11 +144,7 @@ export default function Navbar() {
             ))}
             <Link
               href="/contacto"
-              className={`ml-4 px-4 py-2 text-[11px] font-black uppercase tracking-widest transition-all ${
-                isLight
-                  ? "border border-black text-black hover:bg-black hover:text-white"
-                  : "border border-white/30 text-white hover:bg-white hover:text-black"
-              }`}
+              className="ml-2 lg:ml-4 px-3 lg:px-4 py-1.5 lg:py-2 text-[10px] lg:text-[11px] font-bold uppercase tracking-widest transition-all border border-white/30 text-white hover:bg-white hover:text-black rounded-sm"
             >
               Clase gratis
             </Link>
@@ -134,46 +152,45 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* MOBILE NAV */}
-      <nav className="md:hidden h-16 px-6 flex justify-between items-center relative z-[120]">
+      {/* MOBILE NAV (menos de 768px) */}
+      <nav className="md:hidden h-14 px-4 flex justify-between items-center relative z-[120]">
         <Link
           href="/"
           onClick={handleClose}
-          className={`flex items-center gap-2 font-bold uppercase ${textColor}`}
+          className={`flex items-center gap-2 font-semibold uppercase tracking-wide ${textColor}`}
         >
           <img src="/img/icono.png" className="w-6 h-6" alt="Logo" />
-          Palooka
+          <span className="text-sm">Palooka</span>
         </Link>
 
         <button
           onClick={handleToggle}
-          className="relative w-8 h-8 flex flex-col items-center justify-center gap-1.5 focus:outline-none"
+          className="relative w-7 h-7 flex flex-col items-center justify-center gap-1.5 focus:outline-none z-[130]"
+          aria-label="Menú"
         >
           <span
-            className={`block h-0.5 w-6 ${iconColor} transition-all duration-300 transform ${
+            className={`block h-0.5 w-5 ${iconColor} transition-all duration-300 transform ${
               menuAbierto ? "rotate-45 translate-y-2" : ""
             }`}
           />
           <span
-            className={`block h-0.5 w-6 ${iconColor} transition-all duration-300 ${
+            className={`block h-0.5 w-5 ${iconColor} transition-all duration-300 ${
               menuAbierto ? "opacity-0" : "opacity-100"
             }`}
           />
           <span
-            className={`block h-0.5 w-6 ${iconColor} transition-all duration-300 transform ${
+            className={`block h-0.5 w-5 ${iconColor} transition-all duration-300 transform ${
               menuAbierto ? "-rotate-45 -translate-y-2" : ""
             }`}
           />
         </button>
 
-        {/* Menú Desplegable Móvil */}
+        {/* Menú Desplegable Móvil - Pantalla completa */}
         <div
-          className={`absolute top-16 left-0 w-full ${
-            isLight ? "bg-[#f2f2f0]" : "bg-black"
-          } flex flex-col items-center py-10 gap-6 transition-all duration-500 ease-in-out z-[110] shadow-2xl ${
+          className={`fixed top-0 left-0 w-full h-screen bg-zinc-900 flex flex-col items-center justify-center gap-6 transition-all duration-500 ease-in-out z-[110] ${
             menuAbierto
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 -translate-y-4 pointer-events-none"
+              ? "opacity-100 visible"
+              : "opacity-0 invisible pointer-events-none"
           }`}
         >
           {NAV_LINKS.map((link) => (
@@ -181,12 +198,10 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               onClick={handleClose}
-              className={`text-xl font-bold uppercase tracking-widest transition-colors duration-300 ${
+              className={`text-2xl sm:text-3xl font-semibold uppercase tracking-wide transition-colors duration-300 ${
                 pathname === link.href
                   ? "text-red-600"
-                  : isLight
-                    ? "text-zinc-800"
-                    : "text-white"
+                  : "text-white hover:text-red-600"
               }`}
             >
               {link.label}
@@ -195,9 +210,7 @@ export default function Navbar() {
           <Link
             href="/contacto"
             onClick={handleClose}
-            className={`mt-4 px-10 py-4 font-black uppercase text-xs tracking-[0.2em] rounded-sm active:scale-95 transition-transform ${
-              isLight ? "bg-zinc-900 text-white" : "bg-white text-black"
-            }`}
+            className="mt-6 px-8 py-3 bg-red-600 text-white font-bold uppercase text-xs tracking-[0.2em] rounded-sm active:scale-95 transition-transform"
           >
             Clase gratis
           </Link>
