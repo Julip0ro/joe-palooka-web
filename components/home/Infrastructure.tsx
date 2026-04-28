@@ -3,92 +3,99 @@
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
 
-/**
- * Sección que muestra las instalaciones del gimnasio.
- * Presenta imágenes del ring, zona de trabajo y equipamiento.
- */
+const galeria = [
+  { img: "/img/r2.jpeg", label: "Ring Oficial" },
+  { img: "/img/r1.jpeg", label: "Zona de Trabajo" },
+  { img: "/img/r3.jpeg", label: "Equipamiento" },
+];
+
 export default function Infrastructure() {
   return (
-    <section className="relative bg-[#121212] px-4 sm:px-6">
-      <div className="max-w-5xl mx-auto pt-10 sm:pt-12 md:pt-20 pb-10 sm:pb-12 md:pb-20">
-        {/* Bloque de texto principal */}
-        <div className="mb-6 sm:mb-8 md:mb-10 max-w-2xl">
+    <section
+      className="relative bg-zinc-950 py-12 md:py-16 px-6 overflow-hidden"
+      data-theme="dark"
+    >
+      {/* MARCA DE AGUA DE PUNTOS: SURCO (Estilo Metodología/Staff) */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden z-0">
+        {/* Móvil: S Gigante */}
+        <span
+          className="md:hidden text-[120vw] font-[family-name:var(--font-archivo)] font-black uppercase leading-none text-transparent"
+          style={{
+            backgroundImage: "radial-gradient(#ffffff 2px, transparent 0)",
+            backgroundSize: "14px 14px",
+            WebkitBackgroundClip: "text",
+            backgroundClip: "text",
+            opacity: 0.03,
+          }}
+        >
+          S
+        </span>
+        {/* Desktop: SURCO Horizontal */}
+        <span
+          className="hidden md:block text-[22vw] font-[family-name:var(--font-archivo)] font-black uppercase leading-none text-transparent"
+          style={{
+            backgroundImage: "radial-gradient(#ffffff 2.5px, transparent 0)",
+            backgroundSize: "18px 18px",
+            WebkitBackgroundClip: "text",
+            backgroundClip: "text",
+            opacity: 0.03,
+          }}
+        >
+          SURCO
+        </span>
+      </div>
+
+      <div className="relative z-10 max-w-5xl mx-auto">
+        {/* CABECERA: Alineada con Staff/Features */}
+        <div className="mb-10 md:mb-14">
           <Reveal>
-            <h2 className="text-white text-[clamp(1.8rem,6vw,3rem)] sm:text-[clamp(2rem,7vw,3.5rem)] md:text-[clamp(2.2rem,8vw,4.5rem)] font-[family-name:var(--font-archivo)] uppercase leading-[0.85] sm:leading-[0.8] tracking-tighter mb-3 sm:mb-4">
-              Infraestructura <br />
+            <span className="text-red-600 font-bold text-[10px] uppercase tracking-[0.4em] mb-2 block">
+              Instalaciones
+            </span>
+            <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-[family-name:var(--font-archivo)] uppercase leading-[0.85] tracking-tighter max-w-xl">
+              Equipamiento <br />
               <span className="text-red-600">Sin Filtros</span>
             </h2>
           </Reveal>
           <Reveal delay={200}>
-            <p className="text-zinc-400 text-xs sm:text-sm md:text-base leading-relaxed border-l border-red-600/40 pl-4 sm:pl-5">
+            <p className="text-zinc-500 text-xs md:text-sm mt-4 font-medium uppercase tracking-wide border-l border-red-600/30 pl-4">
               Joe Palooka no es un gimnasio de lujo, es un espacio de
               entrenamiento real. Aquí vienes a sudar y a aprender.
             </p>
           </Reveal>
         </div>
 
-        {/* Galería de imágenes responsiva */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3 md:gap-3">
-          {/* Imagen del ring oficial */}
-          <Reveal delay={100}>
-            <div className="relative aspect-[4/3] overflow-hidden bg-zinc-900 border border-white/5">
-              <Image
-                src="/img/r2.jpeg"
-                alt="Ring oficial de boxeo Joe Palooka"
-                fill
-                className="object-cover grayscale opacity-60 hover:opacity-100 transition-all duration-500"
-                sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                priority={false}
-              />
-              <div className="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 px-1.5 py-0.5 sm:px-2 sm:py-1 bg-black/60 backdrop-blur-sm text-[8px] sm:text-[9px] text-white font-bold uppercase">
-                Ring Oficial
-              </div>
-            </div>
-          </Reveal>
+        {/* GRID DE IMÁGENES: Estilo Cinematográfico */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-3 lg:gap-4">
+          {galeria.map((item, index) => (
+            <Reveal key={index} delay={index * 100}>
+              <div className="group relative aspect-[4/3] md:aspect-[3/4] overflow-hidden bg-zinc-900 rounded-sm shadow-2xl">
+                <Image
+                  src={item.img}
+                  alt={item.label}
+                  fill
+                  className="object-cover grayscale contrast-[1.1] brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700 ease-in-out group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
 
-          {/* Imagen de la zona de trabajo */}
-          <Reveal delay={200}>
-            <div className="relative aspect-[4/3] overflow-hidden bg-zinc-900 border border-white/5">
-              <Image
-                src="/img/r1.jpeg"
-                alt="Zona de entrenamiento Joe Palooka"
-                fill
-                className="object-cover grayscale opacity-60 hover:opacity-100 transition-all duration-500"
-                sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                priority={false}
-              />
-              <div className="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 px-1.5 py-0.5 sm:px-2 sm:py-1 bg-black/60 backdrop-blur-sm text-[8px] sm:text-[9px] text-white font-bold uppercase">
-                Zona de Trabajo
+                {/* Etiqueta minimalista al hacer hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute bottom-4 left-4 translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                  <p className="text-white text-[10px] font-black uppercase tracking-[0.2em]">
+                    {item.label}
+                  </p>
+                </div>
               </div>
-            </div>
-          </Reveal>
-
-          {/* Imagen de sacos y peras */}
-          <Reveal delay={300}>
-            <div className="relative aspect-[4/3] overflow-hidden bg-zinc-900 border border-white/5 sm:col-span-2 md:col-span-1">
-              <Image
-                src="/img/r3.jpeg"
-                alt="Sacos y peras de velocidad Joe Palooka"
-                fill
-                className="object-cover grayscale opacity-60 hover:opacity-100 transition-all duration-500"
-                sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                priority={false}
-              />
-              <div className="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 px-1.5 py-0.5 sm:px-2 sm:py-1 bg-black/60 backdrop-blur-sm text-[8px] sm:text-[9px] text-white font-bold uppercase">
-                Sacos y Peras
-              </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          ))}
         </div>
 
-        {/* Nota final minimalista */}
+        {/* CIERRE SUTIL */}
         <Reveal delay={400}>
-          <div className="mt-6 sm:mt-8 md:mt-10 flex flex-col sm:flex-row items-center gap-3 sm:gap-4 opacity-60">
-            <div className="hidden sm:block h-px grow bg-white/10" />
-            <p className="text-zinc-500 text-[8px] sm:text-[9px] md:text-[10px] uppercase tracking-[0.2em] sm:tracking-[0.3em] font-bold text-center whitespace-normal sm:whitespace-nowrap">
-              Espacio apto para sparring real y técnica olímpica
+          <div className="mt-12 text-center">
+            <p className="text-zinc-600 text-[8px] uppercase tracking-[0.3em] font-bold">
+              EST. 1988 — Santiago de Surco
             </p>
-            <div className="hidden sm:block h-px grow bg-white/10" />
           </div>
         </Reveal>
       </div>

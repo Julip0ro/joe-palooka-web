@@ -102,7 +102,7 @@ export default function Navbar() {
       return "bg-transparent";
     }
     if (isScrolled) {
-      return "bg-black/10 backdrop-blur-sm";
+      return "bg-black/80 backdrop-blur-sm";
     }
     return "bg-transparent";
   };

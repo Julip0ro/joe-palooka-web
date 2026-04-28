@@ -25,11 +25,11 @@ export default function Home() {
         <Methodology />
       </section>
 
+      <ZoomOutSection />
+
       <section data-theme="light">
         <Staff />
       </section>
-
-      <ZoomOutSection />
 
       <section data-theme="dark">
         <Infrastructure />

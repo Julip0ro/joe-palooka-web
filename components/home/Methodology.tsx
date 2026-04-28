@@ -1,94 +1,164 @@
 "use client";
 
-import Image from "next/image";
-import Reveal from "@/components/Reveal";
+import { useEffect, useRef, useState } from "react";
 
 const puntos = [
   {
     titulo: "Técnica Olímpica",
     descripcion:
-      "Fundamentos biomecánicos de alta competencia para maximizar potencia y precisión en cada golpe.",
+      "Fundamentos biomecánicos para maximizar potencia y precisión.",
   },
   {
     titulo: "Estrategia de Ring",
-    descripcion:
-      "Gestión de la distancia, lectura del oponente y dominio del centro del cuadrilátero.",
+    descripcion: "Gestión de distancia y dominio del centro del cuadrilátero.",
   },
   {
     titulo: "Preparación Real",
-    descripcion:
-      "Ciclos de entrenamiento basados en competencia, adaptados a tu progreso individual.",
+    descripcion: "Ciclos de entrenamiento adaptados a tu progreso individual.",
   },
 ];
 
-/**
- * Sección que presenta la metodología de entrenamiento del gimnasio.
- * Enfatiza el enfoque técnico basado en estándares de alta competencia.
- */
 export default function Methodology() {
+  const pyramidRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!pyramidRef.current || !sectionRef.current) return;
+
+      const rect = sectionRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      const progress = Math.min(
+        Math.max((windowHeight - rect.top) / (windowHeight + rect.height), 0),
+        1,
+      );
+
+      pyramidRef.current.style.opacity = `${1 - progress * 0.9}`;
+      pyramidRef.current.style.transform = `translateY(${progress * 120}px)`;
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setVisible(true);
+      },
+      { threshold: 0.2 },
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <section className="relative bg-[#121212] overflow-hidden min-h-screen lg:min-h-[800px] flex items-stretch">
-      {/* Contenedor de imagen ubicado en el lado derecho */}
-      <div className="absolute right-0 top-0 w-full lg:w-1/2 h-full z-0 opacity-60 lg:opacity-100">
-        <div className="relative w-full h-full">
-          <Image
-            src="/img/boxh1.webp"
-            alt="Metodología Joe Palooka"
-            fill
-            className="object-cover object-top lg:object-center"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            priority
-          />
+    <section
+      ref={sectionRef}
+      className="relative w-full min-h-[60vh] flex items-center justify-center overflow-hidden bg-zinc-950 py-20 px-6"
+    >
+      {/* PIRÁMIDE */}
+      <div
+        ref={pyramidRef}
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[260vw] md:w-full h-[65vh] md:h-[45vh] pointer-events-none z-0"
+        style={{
+          background: "rgba(255,255,255,0.08)",
+          clipPath: "polygon(0% 100%, 100% 100%, 50% 0%)",
+        }}
+      />
 
-          {/* Degradado que desvanece el borde izquierdo de la imagen en desktop */}
-          <div className="absolute inset-0 hidden lg:block bg-gradient-to-r from-[#121212] via-[#121212]/40 to-transparent w-full" />
-
-          {/* Degradado móvil que desvanece de abajo hacia arriba para legibilidad del texto */}
-          <div className="absolute inset-0 lg:hidden bg-gradient-to-t from-[#121212] via-[#121212]/80 to-transparent" />
-        </div>
+      {/* TEXTURA DE FONDO */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.06]">
+        <div
+          className="w-full h-full"
+          style={{
+            backgroundImage: `
+              linear-gradient(45deg, rgba(255,255,255,0.15) 1px, transparent 1px),
+              linear-gradient(-45deg, rgba(255,255,255,0.15) 1px, transparent 1px)
+            `,
+            backgroundSize: "40px 40px",
+          }}
+        />
       </div>
 
-      {/* Contenido textual desplazado hacia el centro */}
-      <div className="relative z-10 w-full lg:w-1/2 flex items-center px-8 sm:px-12 md:px-16 py-24 md:py-32">
-        <div className="max-w-xl w-full mx-auto lg:mx-0 lg:ml-16 xl:ml-24">
-          <Reveal>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="h-px w-8 bg-red-600" />
-              <span className="text-red-600 font-bold text-[10px] md:text-xs uppercase tracking-[0.4em]">
-                Sistema de trabajo
-              </span>
+      <div
+        className={`relative z-10 max-w-5xl mx-auto w-full transition-all duration-700 ease-out ${
+          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        }`}
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center text-center">
+          {/* CONTENEDOR DE TÍTULO CON BANDERA */}
+          <div className="flex flex-col items-center relative">
+            {/* BANDERA DE PERÚ DE PUNTOS RESPONSIVA */}
+            <div className="absolute top-[60%] md:top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-36 md:w-full md:max-w-[480px] md:h-72 pointer-events-none opacity-30 z-[-1] flex">
+              <div
+                className="flex-1"
+                style={{
+                  backgroundImage:
+                    "radial-gradient(#ff0000 2.5px, transparent 0)",
+                  backgroundSize: "16px 16px",
+                }}
+              />
+              <div
+                className="flex-1"
+                style={{
+                  backgroundImage:
+                    "radial-gradient(#ffffff 2.5px, transparent 0)",
+                  backgroundSize: "16px 16px",
+                }}
+              />
+              <div
+                className="flex-1"
+                style={{
+                  backgroundImage:
+                    "radial-gradient(#ff0000 2.5px, transparent 0)",
+                  backgroundSize: "16px 16px",
+                }}
+              />
             </div>
-          </Reveal>
 
-          <Reveal delay={200}>
-            <h2 className="text-white text-[clamp(2.5rem,8vw,4.5rem)] font-[family-name:var(--font-archivo)] uppercase leading-[0.85] tracking-tighter mb-12 md:mb-16">
+            <span className="text-white text-[10px] uppercase tracking-[0.5em] mb-4">
+              Metodología
+            </span>
+            <h2 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-archivo)] uppercase leading-tight tracking-tight">
               Entrena como la <br />
-              <span className="text-red-600">Selección Nacional</span>
+              Selección
             </h2>
-          </Reveal>
-
-          <div className="space-y-10 md:space-y-14">
-            {puntos.map((item, index) => (
-              <Reveal key={index} delay={300 + index * 100}>
-                <div className="group border-l-2 border-white/5 hover:border-red-600 pl-6 transition-colors duration-500">
-                  <h3 className="text-white text-lg md:text-xl font-[family-name:var(--font-archivo)] uppercase mb-3 tracking-tight">
-                    {item.titulo}
-                  </h3>
-                  <p className="text-zinc-400 text-sm md:text-base leading-relaxed">
-                    {item.descripcion}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
           </div>
 
-          <Reveal delay={700}>
-            <div className="mt-16 border-t border-white/5 pt-8">
-              <p className="text-zinc-500 text-[10px] uppercase tracking-[0.3em] font-black">
-                Surco · Lima · Perú
-              </p>
-            </div>
-          </Reveal>
+          <div className="max-w-md mx-auto space-y-8 text-left">
+            {puntos.map((item, index) => (
+              <div
+                key={index}
+                className={`transition-all duration-700 ease-out ${
+                  visible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-6"
+                }`}
+                style={{ transitionDelay: `${index * 120}ms` }}
+              >
+                <div className="flex items-start gap-3">
+                  {/* acento sutil */}
+                  <div className="w-[2px] h-4 bg-red-600 mt-1" />
+
+                  <div>
+                    <h3 className="text-white text-xs md:text-sm font-semibold uppercase tracking-wider mb-1">
+                      {item.titulo}
+                    </h3>
+
+                    <p className="text-white/70 text-xs md:text-sm leading-relaxed">
+                      {item.descripcion}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

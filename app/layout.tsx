@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import FloatingActions from "@/components/FloatingActions";
 import ScrollToTopOnRouteChange from "@/components/ScrollToTopOnRouteChange";
+import AnuncioModal from "@/components/AnuncioModal";
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
 const archivoBlack = Archivo_Black({
@@ -51,6 +52,7 @@ export default function RootLayout({
       >
         <ScrollToTopOnRouteChange />
         <Navbar />
+        <AnuncioModal />
         <main className="grow relative z-10 w-full">{children}</main>
         <FloatingActions />
         <Footer />

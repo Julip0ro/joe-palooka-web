@@ -6,109 +6,108 @@ import Reveal from "@/components/Reveal";
 const profesores = [
   {
     nombre: "Victor Paredes",
-    especialidad: "Ex Seleccionado Nacional",
+    cargo: "Ex Seleccionado Nacional",
     img: "/img/victorp.webp",
   },
   {
     nombre: "Luis Paredes",
-    especialidad: "Ex Entrenador de la Selección Peruana",
+    cargo: "Ex Entrenador Selección",
     img: "/img/luisp.webp",
   },
   {
     nombre: "Alan Paredes",
-    especialidad: "7x Campeón Nacional",
+    cargo: "7x Campeón Nacional",
     img: "/img/alanp.webp",
   },
 ];
 
-/**
- * Sección que presenta al cuerpo de entrenadores del gimnasio.
- * Muestra la trayectoria y especialidad de cada maestro de boxeo.
- */
 export default function Staff() {
   return (
-    <section className="relative bg-[#e5e5e5] py-8 md:py-20 px-4 sm:px-6 overflow-hidden">
-      {/* Marca de agua con el apellido familiar */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 select-none overflow-hidden">
-        <span className="text-[18vw] sm:text-[20vw] md:text-[22vw] font-[family-name:var(--font-archivo)] font-black uppercase text-zinc-950 opacity-[0.03] leading-none tracking-tighter">
-          Paredes
+    <section
+      className="relative bg-[#f2f2f0] py-12 md:py-16 px-6 overflow-hidden"
+      data-theme="light"
+    >
+      {/* MARCA DE AGUA DE PUNTOS (Estilo Metodología) */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden z-0">
+        {/* MÓVIL: PAR Vertical Masivo (Ocupa todo el fondo) */}
+        <div className="md:hidden flex flex-col items-center leading-[0.7] opacity-[0.04]">
+          {["P", "A", "R"].map((letra) => (
+            <span
+              key={letra}
+              className="text-[120vw] font-[family-name:var(--font-archivo)] font-black uppercase text-transparent"
+              style={{
+                backgroundImage: "radial-gradient(#000000 3px, transparent 0)",
+                backgroundSize: "15px 15px",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+              }}
+            >
+              {letra}
+            </span>
+          ))}
+        </div>
+
+        {/* DESKTOP: PAREDES Horizontal */}
+        <span
+          className="hidden md:block text-[20vw] font-[family-name:var(--font-archivo)] font-black uppercase leading-none text-transparent opacity-[0.05]"
+          style={{
+            backgroundImage: "radial-gradient(#000000 2.5px, transparent 0)",
+            backgroundSize: "15px 15px",
+            WebkitBackgroundClip: "text",
+            backgroundClip: "text",
+          }}
+        >
+          PAREDES
         </span>
       </div>
 
-      <div className="max-w-5xl mx-auto relative z-10">
-        {/* Cabecera de la sección */}
-        <div className="flex flex-col items-center mb-6 md:mb-12 lg:mb-14">
+      <div className="relative z-10 max-w-5xl mx-auto">
+        {/* CABECERA COMPACTA */}
+        <div className="text-center mb-12 md:mb-16">
           <Reveal>
-            <h2 className="text-zinc-950 text-[clamp(1.6rem,5vw,3rem)] md:text-[clamp(2rem,8vw,4rem)] font-[family-name:var(--font-archivo)] uppercase tracking-tighter leading-none text-center">
+            <span className="text-red-600 font-bold text-[10px] uppercase tracking-[0.4em] mb-2 block">
+              Staff Técnico
+            </span>
+            <h2 className="text-zinc-900 text-3xl md:text-4xl lg:text-5xl font-[family-name:var(--font-archivo)] uppercase leading-[0.85] tracking-tighter">
               Nuestros <span className="text-red-600">Entrenadores</span>
             </h2>
           </Reveal>
-          <Reveal delay={200}>
-            <div className="h-[2px] w-8 md:w-12 bg-red-600 mt-3 md:mt-6 mx-auto" />
-          </Reveal>
         </div>
 
-        {/* Cuadrícula de tarjetas de entrenadores - tarjetas más pequeñas */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-4 lg:gap-5 max-w-4xl mx-auto">
+        {/* GRID DE ENTRENADORES */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-16 md:gap-4 lg:gap-10 items-start">
           {profesores.map((profesor, index) => (
             <Reveal key={index} delay={index * 100}>
-              <div className="group relative flex flex-col bg-white/40 p-1.5 md:p-2 transition-all duration-500 hover:bg-white shadow-sm hover:shadow-xl border border-black/5 rounded-sm">
-                {/* Contenedor de imagen con enfoque en el rostro */}
-                <div className="relative aspect-[3/4] overflow-hidden transition-all duration-700 bg-zinc-300 md:grayscale md:contrast-[1.1] md:group-hover:grayscale-0">
+              <div className="flex flex-col items-center text-center group">
+                {/* IMAGEN CIRCULAR GRANDE */}
+                <div className="relative w-52 h-52 sm:w-40 sm:h-40 md:w-52 md:h-52 lg:w-60 lg:h-60 mb-6 overflow-hidden rounded-full grayscale group-hover:grayscale-0 transition-all duration-700 bg-zinc-200 border-2 border-white shadow-2xl shadow-black/10">
                   <Image
                     src={profesor.img}
                     alt={profesor.nombre}
                     fill
-                    className="object-cover object-top transform transition-transform duration-1000 group-hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    style={{
-                      objectPosition:
-                        profesor.nombre === "Alan Paredes"
-                          ? "center 20%"
-                          : "center center",
-                    }}
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-110"
+                    sizes="(max-width: 768px) 208px, 240px"
                   />
-
-                  {/* Superposición de degradado inferior para mejorar legibilidad del nombre */}
-                  <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
-
-                  {/* Nombre ubicado en la parte inferior de la imagen */}
-                  <div className="absolute bottom-0 left-0 right-0 p-3 md:p-5 text-left pointer-events-none">
-                    <h3 className="text-white text-lg sm:text-xl md:text-3xl font-[family-name:var(--font-archivo)] uppercase leading-tight tracking-tighter drop-shadow-2xl">
-                      {profesor.nombre.split(" ")[0]}
-                      <br />
-                      <span className="text-sm sm:text-base md:text-xl font-normal opacity-90">
-                        {profesor.nombre.split(" ")[1]}
-                      </span>
-                    </h3>
-                  </div>
                 </div>
 
-                {/* Información profesional del entrenador */}
-                <div className="py-3 md:py-4 px-2 md:px-3 text-center">
-                  <p className="text-red-600 font-black text-[8px] sm:text-[9px] md:text-[10px] uppercase tracking-[0.2em] mb-1">
-                    Entrenador
-                  </p>
-                  <p className="text-zinc-600 text-[8px] sm:text-[9px] md:text-[11px] uppercase font-bold tracking-tight leading-tight max-w-[160px] mx-auto">
-                    {profesor.especialidad}
-                  </p>
-                </div>
+                {/* TEXTO */}
+                <h3 className="text-zinc-900 text-xl font-[family-name:var(--font-archivo)] uppercase tracking-tight mb-1">
+                  {profesor.nombre}
+                </h3>
+
+                <p className="text-zinc-500 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] leading-tight max-w-[180px]">
+                  {profesor.cargo}
+                </p>
               </div>
             </Reveal>
           ))}
         </div>
 
-        {/* Texto de cierre */}
+        {/* CIERRE SUTIL */}
         <Reveal delay={400}>
-          <div className="mt-8 md:mt-12 lg:mt-14 text-center max-w-xl mx-auto px-4">
-            <p className="text-zinc-500 text-[8px] sm:text-[9px] md:text-[11px] uppercase tracking-[0.2em] leading-relaxed font-medium">
-              Selección nacional, campeonatos y trayectoria.
-              <br />
-              Un{" "}
-              <span className="text-zinc-800 font-bold">
-                legado familiar
-              </span>{" "}
-              que se transmite en cada round.
+          <div className="mt-14 text-center">
+            <p className="text-zinc-400 text-[8px] uppercase tracking-[0.3em] font-bold opacity-60">
+              Legado Paredes — Santiago de Surco
             </p>
           </div>
         </Reveal>

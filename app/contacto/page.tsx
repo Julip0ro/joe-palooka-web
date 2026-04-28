@@ -129,7 +129,7 @@ export default function ContactoPage() {
                           </p>
                           <div className="flex items-center gap-2 mt-1">
                             <span className="text-red-600 font-black text-sm">
-                              07:00
+                              06:00
                             </span>
                             <div className="h-px w-4 bg-zinc-300" />
                             <span className="text-red-600 font-black text-sm">
