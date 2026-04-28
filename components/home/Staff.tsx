@@ -66,7 +66,7 @@ export default function Staff() {
         <div className="text-center mb-12 md:mb-16">
           <Reveal>
             <span className="text-red-600 font-bold text-[10px] uppercase tracking-[0.4em] mb-2 block">
-              Staff Técnico
+              PROFESIONALES
             </span>
             <h2 className="text-zinc-900 text-3xl md:text-4xl lg:text-5xl font-[family-name:var(--font-archivo)] uppercase leading-[0.85] tracking-tighter">
               Nuestros <span className="text-red-600">Entrenadores</span>

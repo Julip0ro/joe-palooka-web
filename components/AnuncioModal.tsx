@@ -11,17 +11,13 @@ export default function AnuncioModal() {
   const [showScrollHint, setShowScrollHint] = useState(true);
 
   useEffect(() => {
-    // 1. FUNCIÓN PARA ABRIR EL MODAL DESDE EL EXTERIOR (Hero)
     const triggerOpen = () => {
       setShouldRender(true);
-      // Pequeño timeout para que la transición de CSS se dispare tras el render
       setTimeout(() => setIsOpen(true), 10);
     };
 
-    // 2. ESCUCHAR EL EVENTO PERSONALIZADO
     window.addEventListener("abrir-anuncio", triggerOpen);
 
-    // 3. LOGICA ORIGINAL: APERTURA AUTOMÁTICA
     if (data.activo) {
       const timer = setTimeout(() => {
         setShouldRender(true);
@@ -39,7 +35,6 @@ export default function AnuncioModal() {
 
   const handleClose = () => {
     setIsOpen(false);
-    // Esperamos a que la animación termine antes de quitarlo del DOM
     setTimeout(() => setShouldRender(false), 600);
   };
 
@@ -61,9 +56,9 @@ export default function AnuncioModal() {
     <div
       id="anuncio-overlay"
       onClick={handleBackdropClick}
-      className={`fixed inset-0 z-[200] flex items-center justify-center p-3 sm:p-6 transition-all duration-1000 ease-in-out ${
+      className={`fixed inset-0 z-[200] flex items-center justify-center p-4 transition-all duration-1000 ease-in-out ${
         isOpen
-          ? "bg-black/60 backdrop-blur-sm opacity-100"
+          ? "bg-black/70 backdrop-blur-sm opacity-100"
           : "bg-black/0 backdrop-blur-0 opacity-0 pointer-events-none"
       }`}
     >
@@ -77,29 +72,39 @@ export default function AnuncioModal() {
         }
       `}</style>
 
+      {/* 
+        CONTENEDOR: 
+        En movil: w-[90%] para que no toque los bordes y max-h-[80vh] para que sea más corto.
+        En PC: md:w-full md:max-w-4xl md:max-h-[92vh] (Tu diseño original)
+      */}
       <div
-        className={`relative w-full max-w-4xl max-h-[92vh] flex flex-col md:flex-row shadow-2xl transition-all duration-700 delay-100 ease-out transform ${
+        className={`relative w-[90%] md:w-full md:max-w-4xl max-h-[80vh] md:max-h-[92vh] flex flex-col md:flex-row shadow-2xl transition-all duration-700 delay-100 ease-out transform ${
           isOpen
             ? "translate-y-0 scale-100 opacity-100"
             : "translate-y-12 scale-95 opacity-0"
         }`}
       >
-        {/* BOTÓN CERRAR: Círculo rojo fijo - Destaca en iPhone SE */}
+        {/* 
+          BOTÓN CERRAR:
+          En movil: top-2 right-2 (POSITIVO para que esté DENTRO del cuadro y se vea siempre)
+          En PC: md:top-4 md:right-4 (Tu diseño original)
+        */}
         <button
           onClick={handleClose}
-          className="absolute -top-2 -right-2 md:top-4 md:right-4 z-[210] p-3 bg-red-600 text-white rounded-full shadow-lg hover:bg-zinc-900 transition-all active:scale-90 border-2 border-[#f2f2f0]"
+          className="absolute top-2 right-2 md:top-4 md:right-4 z-[210] p-2 md:p-3 bg-red-600 text-white rounded-full shadow-lg hover:bg-zinc-900 transition-all active:scale-90 border-2 border-[#f2f2f0]"
           aria-label="Cerrar"
         >
-          <X size={20} strokeWidth={3} />
+          <X size={18} className="md:w-5 md:h-5" strokeWidth={3} />
         </button>
 
-        {/* CONTENEDOR CON SCROLL (Optimizado para pantallas pequeñas) */}
         <div
           onScroll={handleScroll}
-          className="w-full flex flex-col md:flex-row bg-[#f2f2f0] overflow-y-auto md:overflow-hidden rounded-sm no-scrollbar relative"
+          className="w-full flex flex-col md:flex-row bg-[#f2f2f0] overflow-y-auto md:overflow-hidden rounded-xl md:rounded-sm no-scrollbar relative"
         >
-          {/* LADO IZQUIERDO: IMAGEN (Respetando 1080x1350) */}
-          <div className="relative w-full md:w-[45%] bg-zinc-950 aspect-[4/5] md:aspect-auto shrink-0">
+          {/* LADO IZQUIERDO: IMAGEN 
+              En movil: h-[180px] para que sea pequeña y no desplace todo el texto hacia abajo
+          */}
+          <div className="relative w-full md:w-[45%] h-[180px] md:h-auto bg-zinc-950 shrink-0">
             <Image
               src={data.imagen}
               alt={data.titulo}
@@ -111,47 +116,43 @@ export default function AnuncioModal() {
           </div>
 
           {/* LADO DERECHO: CONTENIDO */}
-          <div className="w-full md:w-[55%] p-6 sm:p-10 md:p-12 flex flex-col justify-center relative min-h-[350px]">
-            <span className="text-red-600 font-bold text-[9px] md:text-[10px] uppercase tracking-[0.4em] mb-2 block">
+          <div className="w-full md:w-[55%] p-5 md:p-12 flex flex-col justify-center relative">
+            <span className="text-red-600 font-bold text-[8px] md:text-[10px] uppercase tracking-[0.4em] mb-2 block">
               {data.subtitulo}
             </span>
 
-            <h2 className="text-zinc-900 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-archivo)] uppercase leading-[0.85] tracking-tighter mb-4 md:mb-6">
+            {/* Título más pequeño en movil (text-2xl) para que no ocupe toda la pantalla */}
+            <h2 className="text-zinc-900 text-2xl md:text-6xl font-[family-name:var(--font-archivo)] uppercase leading-[0.9] tracking-tighter mb-4 md:mb-6">
               {data.titulo}
             </h2>
 
-            <div className="h-0.5 w-12 bg-red-600 mb-4 md:mb-6" />
+            <div className="h-0.5 w-10 bg-red-600 mb-4 md:mb-6" />
 
-            <p className="text-zinc-700 text-xs sm:text-sm md:text-base leading-relaxed mb-8 font-medium max-w-sm text-pretty">
+            <p className="text-zinc-700 text-[11px] md:text-base leading-relaxed mb-6 md:mb-8 font-medium max-w-sm">
               {data.descripcion}
             </p>
 
-            <div className="flex flex-col gap-4">
-              {/* BOTÓN INSCRIPCIÓN: Estilo exacto del HERO */}
+            <div className="flex flex-col gap-3">
               <a
                 href={data.linkBoton}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-red-600 hover:bg-zinc-900 text-white text-center py-4 px-10 font-bold uppercase text-[10px] sm:text-[11px] tracking-[0.2em] transition-all duration-500 rounded-sm active:scale-95 shadow-xl shadow-red-600/20"
+                className="inline-block bg-red-600 hover:bg-zinc-900 text-white text-center py-3.5 md:py-4 px-10 font-bold uppercase text-[9px] md:text-[11px] tracking-[0.2em] transition-all duration-500 rounded-sm active:scale-95 shadow-xl shadow-red-600/20"
               >
                 {data.textoBoton}
               </a>
 
               <button
                 onClick={handleClose}
-                className="text-zinc-400 hover:text-red-600 text-[10px] uppercase tracking-[0.2em] font-bold transition-colors py-3 md:py-0"
+                className="text-zinc-400 hover:text-red-600 text-[9px] uppercase tracking-[0.2em] font-bold transition-colors py-2 md:py-0"
               >
                 volver a la pagina
               </button>
             </div>
 
-            {/* AYUDA VISUAL SCROLL (iPhone SE) */}
             {showScrollHint && (
-              <div className="md:hidden absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-50 animate-bounce pointer-events-none">
-                <span className="text-[8px] uppercase tracking-widest font-bold text-zinc-400">
-                  Ver más
-                </span>
-                <ChevronDown size={16} className="text-red-600" />
+              <div className="md:hidden absolute bottom-2 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-50 animate-bounce pointer-events-none">
+                <ChevronDown size={14} className="text-red-600" />
               </div>
             )}
           </div>
